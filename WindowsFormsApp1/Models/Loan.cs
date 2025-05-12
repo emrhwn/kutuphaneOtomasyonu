@@ -26,7 +26,9 @@ namespace WindowsFormsApp1.Models
         [Column(TypeName = "decimal(8,2)")]
         public decimal? FineAmount { get; set; }
 
+
         // Navigation properties
+
         [ForeignKey("BookId")]
         public virtual Book Book { get; set; }
 
