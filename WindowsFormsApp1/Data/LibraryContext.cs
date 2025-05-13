@@ -14,6 +14,8 @@ namespace WindowsFormsApp1.Data
         public DbSet<Member> Members { get; set; }
         public DbSet<Loan> Loans { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
