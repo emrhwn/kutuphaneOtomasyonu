@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace kutupHaneOtomasyonu
 {
-    public partial class BaseListForm : Form
+    public partial class LibrarianForm : Form
     {
-        public BaseListForm()
+        public LibrarianForm()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

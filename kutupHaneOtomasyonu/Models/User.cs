@@ -17,6 +17,14 @@ namespace kutupHaneOtomasyonu.Models
 
         [Required]
         public string PasswordHash { get; set; }
+        
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Phone { get; set; }
 
         [Required, StringLength(20)]
         public string Role { get; set; }  // "Admin", "Kütüphaneci"
