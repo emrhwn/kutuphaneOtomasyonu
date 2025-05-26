@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace kutupHaneOtomasyonu
 {
-    public partial class ReturnBookForm : Form
+    public partial class CreateReservationForm : Form
     {
-        public ReturnBookForm()
+        public CreateReservationForm()
         {
             InitializeComponent();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

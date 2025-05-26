@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace kutupHaneOtomasyonu
 {
-    public partial class LoanBookForm : Form
+    public partial class dtpLoanDate : Form
     {
-        public LoanBookForm()
+        public dtpLoanDate()
         {
             InitializeComponent();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -81,6 +81,12 @@
     <Compile Include="LibrarianForm.Designer.cs">
       <DependentUpon>LibrarianForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoanBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoanBookForm.Designer.cs">
+      <DependentUpon>LoanBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReturnBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnBookForm.Designer.cs">
+      <DependentUpon>ReturnBookForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LibrarianForm.resx">
       <DependentUpon>LibrarianForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoanBookForm.resx">
+      <DependentUpon>LoanBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -139,6 +154,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnBookForm.resx">
+      <DependentUpon>ReturnBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
