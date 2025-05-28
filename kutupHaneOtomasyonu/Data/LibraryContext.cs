@@ -29,6 +29,7 @@ namespace kutupHaneOtomasyonu.Data
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

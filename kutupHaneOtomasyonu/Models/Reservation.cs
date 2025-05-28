@@ -19,7 +19,13 @@ namespace kutupHaneOtomasyonu.Models
 
         [ForeignKey("Member")]
         public int MemberId { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public bool IsActive { get; set; }
+        public string Notes { get; set; }
         public virtual Member Member { get; set; }
+        public int? CreatedByUserId { get; set; }
+
+        public virtual User CreatedByUser { get; set; }
 
         public DateTime ReservationDate { get; set; }
 

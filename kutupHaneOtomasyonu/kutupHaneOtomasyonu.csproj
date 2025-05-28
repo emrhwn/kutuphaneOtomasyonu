@@ -103,11 +103,35 @@
     <Compile Include="LibrarianForm.Designer.cs">
       <DependentUpon>LibrarianForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibrarianLoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianLoanForm.Designer.cs">
+      <DependentUpon>LibrarianLoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianLoanHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianLoanHistoryForm.Designer.cs">
+      <DependentUpon>LibrarianLoanHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibrarianReservationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LibrarianReservationForm.Designer.cs">
       <DependentUpon>LibrarianReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianReservationUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianReservationUpdateForm.Designer.cs">
+      <DependentUpon>LibrarianReservationUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianReturnForm.Designer.cs">
+      <DependentUpon>LibrarianReturnForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoanBookForm.cs">
       <SubType>Form</SubType>

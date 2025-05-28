@@ -30,6 +30,8 @@ namespace kutupHaneOtomasyonu.Models
         public string Publisher { get; set; }
         public string Name { get; set; }
 
+        public int CategoryId { get; set; }
+
         public int PublicationYear { get; set; }
 
         public int TotalCopies { get; set; }
