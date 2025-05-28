@@ -50,244 +50,249 @@
             this.txtFineAmount = new System.Windows.Forms.TextBox();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(411, 49);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.label1.Location = new System.Drawing.Point(300, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 39);
+            this.label1.Size = new System.Drawing.Size(150, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "KİTAP İADE";
+            this.label1.Text = "📚 KİTAP İADE";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(107, 132);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.label2.Location = new System.Drawing.Point(50, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(184, 29);
+            this.label2.Size = new System.Drawing.Size(153, 21);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Ödünç Bilgileri:";
+            this.label2.Text = "🔍 Ödünç Bilgileri";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(107, 168);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(70, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 25);
+            this.label3.Size = new System.Drawing.Size(78, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Ödünç ID:";
             // 
             // txtLoanId
             // 
-            this.txtLoanId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLoanId.Location = new System.Drawing.Point(271, 168);
+            this.txtLoanId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtLoanId.Location = new System.Drawing.Point(180, 117);
             this.txtLoanId.Name = "txtLoanId";
-            this.txtLoanId.Size = new System.Drawing.Size(172, 26);
+            this.txtLoanId.Size = new System.Drawing.Size(200, 25);
             this.txtLoanId.TabIndex = 2;
             // 
             // btnFindLoan
             // 
-            this.btnFindLoan.Location = new System.Drawing.Point(479, 168);
+            this.btnFindLoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFindLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFindLoan.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFindLoan.ForeColor = System.Drawing.Color.White;
+            this.btnFindLoan.Location = new System.Drawing.Point(400, 115);
             this.btnFindLoan.Name = "btnFindLoan";
-            this.btnFindLoan.Size = new System.Drawing.Size(155, 26);
+            this.btnFindLoan.Size = new System.Drawing.Size(150, 30);
             this.btnFindLoan.TabIndex = 3;
-            this.btnFindLoan.Text = "Ödünç Kaydı Bul";
-            this.btnFindLoan.UseVisualStyleBackColor = true;
+            this.btnFindLoan.Text = "🔍 Kayıt Bul";
+            this.btnFindLoan.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(107, 220);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.label4.Location = new System.Drawing.Point(50, 170);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 29);
+            this.label4.Size = new System.Drawing.Size(136, 21);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Kitap Bilgileri:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Text = "📖 Kitap Bilgileri";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(107, 269);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(70, 210);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 25);
+            this.label5.Size = new System.Drawing.Size(70, 19);
             this.label5.TabIndex = 1;
             this.label5.Text = "Kitap Adı:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(107, 306);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.Location = new System.Drawing.Point(70, 245);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 25);
+            this.label6.Size = new System.Drawing.Size(63, 19);
             this.label6.TabIndex = 1;
             this.label6.Text = "Üye Adı:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(107, 340);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(70, 280);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 25);
+            this.label7.Size = new System.Drawing.Size(96, 19);
             this.label7.TabIndex = 1;
             this.label7.Text = "Ödünç Tarihi:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(107, 376);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.Location = new System.Drawing.Point(70, 315);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 25);
+            this.label8.Size = new System.Drawing.Size(111, 19);
             this.label8.TabIndex = 1;
-            this.label8.Text = "İade Tarihi:";
+            this.label8.Text = "Teslim Edilmeli:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(107, 414);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
+            this.label9.Location = new System.Drawing.Point(50, 360);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(158, 29);
+            this.label9.Size = new System.Drawing.Size(125, 21);
             this.label9.TabIndex = 1;
-            this.label9.Text = "İade Bilgileri:";
-            this.label9.Click += new System.EventHandler(this.label4_Click);
+            this.label9.Text = "✅ İade Bilgileri";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(107, 460);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label10.Location = new System.Drawing.Point(70, 400);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 25);
+            this.label10.Size = new System.Drawing.Size(80, 19);
             this.label10.TabIndex = 1;
             this.label10.Text = "İade Tarihi:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(107, 500);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.Location = new System.Drawing.Point(70, 435);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(169, 25);
+            this.label11.Size = new System.Drawing.Size(121, 19);
             this.label11.TabIndex = 1;
             this.label11.Text = "Gecikme Durumu:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(107, 537);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(70, 470);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(127, 25);
+            this.label12.Size = new System.Drawing.Size(93, 19);
             this.label12.TabIndex = 1;
             this.label12.Text = "Ceza Miktarı:";
             // 
             // txtBookTitle
             // 
-            this.txtBookTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtBookTitle.Location = new System.Drawing.Point(271, 268);
+            this.txtBookTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtBookTitle.Location = new System.Drawing.Point(200, 207);
             this.txtBookTitle.Name = "txtBookTitle";
             this.txtBookTitle.ReadOnly = true;
-            this.txtBookTitle.Size = new System.Drawing.Size(172, 26);
+            this.txtBookTitle.Size = new System.Drawing.Size(250, 25);
             this.txtBookTitle.TabIndex = 2;
             // 
             // txtMemberName
             // 
-            this.txtMemberName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMemberName.Location = new System.Drawing.Point(271, 307);
+            this.txtMemberName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMemberName.Location = new System.Drawing.Point(200, 242);
             this.txtMemberName.Name = "txtMemberName";
             this.txtMemberName.ReadOnly = true;
-            this.txtMemberName.Size = new System.Drawing.Size(172, 26);
+            this.txtMemberName.Size = new System.Drawing.Size(250, 25);
             this.txtMemberName.TabIndex = 2;
             // 
             // txtLoanDate
             // 
-            this.txtLoanDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLoanDate.Location = new System.Drawing.Point(271, 339);
+            this.txtLoanDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtLoanDate.Location = new System.Drawing.Point(200, 277);
             this.txtLoanDate.Name = "txtLoanDate";
             this.txtLoanDate.ReadOnly = true;
-            this.txtLoanDate.Size = new System.Drawing.Size(172, 26);
+            this.txtLoanDate.Size = new System.Drawing.Size(180, 25);
             this.txtLoanDate.TabIndex = 2;
             // 
             // txtDueDate
             // 
-            this.txtDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDueDate.Location = new System.Drawing.Point(271, 377);
+            this.txtDueDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtDueDate.Location = new System.Drawing.Point(200, 312);
             this.txtDueDate.Name = "txtDueDate";
             this.txtDueDate.ReadOnly = true;
-            this.txtDueDate.Size = new System.Drawing.Size(172, 26);
+            this.txtDueDate.Size = new System.Drawing.Size(180, 25);
             this.txtDueDate.TabIndex = 2;
             // 
             // txtStatus
             // 
-            this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtStatus.Location = new System.Drawing.Point(282, 501);
+            this.txtStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtStatus.Location = new System.Drawing.Point(220, 432);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
-            this.txtStatus.Size = new System.Drawing.Size(172, 26);
+            this.txtStatus.Size = new System.Drawing.Size(200, 25);
             this.txtStatus.TabIndex = 2;
             // 
             // txtFineAmount
             // 
-            this.txtFineAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtFineAmount.Location = new System.Drawing.Point(282, 538);
+            this.txtFineAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtFineAmount.Location = new System.Drawing.Point(220, 467);
             this.txtFineAmount.Name = "txtFineAmount";
             this.txtFineAmount.ReadOnly = true;
-            this.txtFineAmount.Size = new System.Drawing.Size(172, 26);
+            this.txtFineAmount.Size = new System.Drawing.Size(200, 25);
             this.txtFineAmount.TabIndex = 2;
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(299, 574);
+            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnReturn.ForeColor = System.Drawing.Color.White;
+            this.btnReturn.Location = new System.Drawing.Point(200, 520);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(155, 30);
+            this.btnReturn.Size = new System.Drawing.Size(120, 40);
             this.btnReturn.TabIndex = 3;
-            this.btnReturn.Text = "İade Et!";
-            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Text = "✅ İade Et";
+            this.btnReturn.UseVisualStyleBackColor = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(468, 574);
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(340, 520);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(155, 30);
+            this.btnCancel.Size = new System.Drawing.Size(120, 40);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "İptal!";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(288, 996);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 22);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button1";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnCancel.Text = "❌ İptal";
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(277, 470);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(220, 397);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(177, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
             this.dateTimePicker1.TabIndex = 4;
             // 
             // ReturnBookForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 628);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(650, 600);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnFindLoan);
@@ -310,8 +315,11 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "ReturnBookForm";
-            this.Text = "ReturnBookForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Kitap İade Sistemi";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +349,6 @@
         private System.Windows.Forms.TextBox txtFineAmount;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

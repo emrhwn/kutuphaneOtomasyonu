@@ -52,6 +52,11 @@
             this.numMaxResCount = new System.Windows.Forms.NumericUpDown();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxLoanDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxBooksPerMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLateFee)).BeginInit();
@@ -62,221 +67,373 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(204, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.label1.Location = new System.Drawing.Point(280, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(684, 39);
+            this.label1.Size = new System.Drawing.Size(200, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "|                 SİSTEM AYARLARI                     |\n";
+            this.label1.Text = "SİSTEM AYARLARI";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(29, 117);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.label2.Location = new System.Drawing.Point(50, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 29);
+            this.label2.Size = new System.Drawing.Size(155, 21);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Genel Ayarlar:";
+            this.label2.Text = "📋 Genel Bilgiler";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(29, 159);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(70, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 24);
+            this.label3.Size = new System.Drawing.Size(111, 19);
             this.label3.TabIndex = 0;
             this.label3.Text = "Kütüphane Adı:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(29, 196);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(70, 155);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 24);
+            this.label4.Size = new System.Drawing.Size(47, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "Adres:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(30, 233);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(70, 210);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 24);
+            this.label5.Size = new System.Drawing.Size(55, 19);
             this.label5.TabIndex = 0;
             this.label5.Text = "Telefon:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(29, 267);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.Location = new System.Drawing.Point(70, 245);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 24);
+            this.label6.Size = new System.Drawing.Size(57, 19);
             this.label6.TabIndex = 0;
             this.label6.Text = "E-Posta:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(30, 324);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.label8.Location = new System.Drawing.Point(50, 300);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(269, 29);
+            this.label8.Size = new System.Drawing.Size(230, 21);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Ödünç Verme Ayarları:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.label8.Text = "📚 Ödünç Verme Ayarları";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(32, 368);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(70, 340);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(227, 24);
+            this.label7.Size = new System.Drawing.Size(160, 19);
             this.label7.TabIndex = 0;
             this.label7.Text = "Maksimum Ödünç Süresi:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(32, 407);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.Location = new System.Drawing.Point(70, 375);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(205, 24);
+            this.label9.Size = new System.Drawing.Size(146, 19);
             this.label9.TabIndex = 0;
             this.label9.Text = "Maksimum Kitap Sayısı:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(32, 441);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label10.Location = new System.Drawing.Point(70, 410);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(151, 24);
+            this.label10.Size = new System.Drawing.Size(132, 19);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Gecikme Cezası:";
+            this.label10.Text = "Gecikme Cezası (₺):";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(29, 496);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
+            this.label11.Location = new System.Drawing.Point(50, 460);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(261, 29);
+            this.label11.Size = new System.Drawing.Size(205, 21);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Rezervasyon Ayarları:";
-            this.label11.Click += new System.EventHandler(this.label8_Click);
+            this.label11.Text = "🔖 Rezervasyon Ayarları";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(31, 538);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(70, 500);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(278, 24);
+            this.label12.Size = new System.Drawing.Size(198, 19);
             this.label12.TabIndex = 0;
             this.label12.Text = "Maksimum Rezervasyon Süresi:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(31, 576);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.Location = new System.Drawing.Point(70, 535);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(273, 24);
+            this.label13.Size = new System.Drawing.Size(193, 19);
             this.label13.TabIndex = 0;
             this.label13.Text = "Maksimum Rezervasyon Sayısı:";
             // 
             // txtLibraryName
             // 
-            this.txtLibraryName.Location = new System.Drawing.Point(175, 161);
+            this.txtLibraryName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtLibraryName.Location = new System.Drawing.Point(220, 117);
             this.txtLibraryName.Name = "txtLibraryName";
-            this.txtLibraryName.Size = new System.Drawing.Size(174, 22);
+            this.txtLibraryName.Size = new System.Drawing.Size(250, 25);
             this.txtLibraryName.TabIndex = 1;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(100, 198);
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtAddress.Location = new System.Drawing.Point(220, 152);
+            this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(174, 22);
-            this.txtAddress.TabIndex = 1;
+            this.txtAddress.Size = new System.Drawing.Size(250, 40);
+            this.txtAddress.TabIndex = 2;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(116, 235);
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtPhone.Location = new System.Drawing.Point(220, 207);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(174, 22);
-            this.txtPhone.TabIndex = 1;
+            this.txtPhone.Size = new System.Drawing.Size(200, 25);
+            this.txtPhone.TabIndex = 3;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(116, 269);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtEmail.Location = new System.Drawing.Point(220, 242);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(174, 22);
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.Size = new System.Drawing.Size(250, 25);
+            this.txtEmail.TabIndex = 4;
             // 
             // numMaxLoanDays
             // 
-            this.numMaxLoanDays.Location = new System.Drawing.Point(265, 368);
+            this.numMaxLoanDays.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.numMaxLoanDays.Location = new System.Drawing.Point(280, 338);
+            this.numMaxLoanDays.Maximum = new decimal(new int[] {
+            365,
+            0,
+            0,
+            0});
+            this.numMaxLoanDays.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMaxLoanDays.Name = "numMaxLoanDays";
-            this.numMaxLoanDays.Size = new System.Drawing.Size(159, 22);
-            this.numMaxLoanDays.TabIndex = 2;
+            this.numMaxLoanDays.Size = new System.Drawing.Size(80, 25);
+            this.numMaxLoanDays.TabIndex = 5;
+            this.numMaxLoanDays.Value = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
             // 
             // numMaxBooksPerMember
             // 
-            this.numMaxBooksPerMember.Location = new System.Drawing.Point(243, 410);
+            this.numMaxBooksPerMember.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.numMaxBooksPerMember.Location = new System.Drawing.Point(280, 373);
+            this.numMaxBooksPerMember.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numMaxBooksPerMember.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMaxBooksPerMember.Name = "numMaxBooksPerMember";
-            this.numMaxBooksPerMember.Size = new System.Drawing.Size(159, 22);
-            this.numMaxBooksPerMember.TabIndex = 2;
+            this.numMaxBooksPerMember.Size = new System.Drawing.Size(80, 25);
+            this.numMaxBooksPerMember.TabIndex = 6;
+            this.numMaxBooksPerMember.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // numLateFee
             // 
-            this.numLateFee.Location = new System.Drawing.Point(190, 444);
+            this.numLateFee.DecimalPlaces = 2;
+            this.numLateFee.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.numLateFee.Location = new System.Drawing.Point(280, 408);
+            this.numLateFee.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numLateFee.Name = "numLateFee";
-            this.numLateFee.Size = new System.Drawing.Size(159, 22);
-            this.numLateFee.TabIndex = 2;
+            this.numLateFee.Size = new System.Drawing.Size(80, 25);
+            this.numLateFee.TabIndex = 7;
+            this.numLateFee.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // numMaxResDays
             // 
-            this.numMaxResDays.Location = new System.Drawing.Point(310, 541);
+            this.numMaxResDays.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.numMaxResDays.Location = new System.Drawing.Point(280, 498);
+            this.numMaxResDays.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numMaxResDays.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMaxResDays.Name = "numMaxResDays";
-            this.numMaxResDays.Size = new System.Drawing.Size(163, 22);
-            this.numMaxResDays.TabIndex = 2;
+            this.numMaxResDays.Size = new System.Drawing.Size(80, 25);
+            this.numMaxResDays.TabIndex = 8;
+            this.numMaxResDays.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
             // 
             // numMaxResCount
             // 
-            this.numMaxResCount.Location = new System.Drawing.Point(310, 579);
+            this.numMaxResCount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.numMaxResCount.Location = new System.Drawing.Point(280, 533);
+            this.numMaxResCount.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numMaxResCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMaxResCount.Name = "numMaxResCount";
-            this.numMaxResCount.Size = new System.Drawing.Size(163, 22);
-            this.numMaxResCount.TabIndex = 2;
+            this.numMaxResCount.Size = new System.Drawing.Size(80, 25);
+            this.numMaxResCount.TabIndex = 9;
+            this.numMaxResCount.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(398, 627);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(250, 590);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(98, 31);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Kaydet";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "💾 Kaydet";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(524, 627);
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(390, 590);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(98, 31);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "İptal";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Size = new System.Drawing.Size(120, 40);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "❌ İptal";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.ForeColor = System.Drawing.Color.Gray;
+            this.label14.Location = new System.Drawing.Point(370, 342);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(26, 15);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "gün";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label15.ForeColor = System.Drawing.Color.Gray;
+            this.label15.Location = new System.Drawing.Point(370, 377);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 15);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "kitap";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label16.ForeColor = System.Drawing.Color.Gray;
+            this.label16.Location = new System.Drawing.Point(370, 412);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 15);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "₺ / günlük";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label17.ForeColor = System.Drawing.Color.Gray;
+            this.label17.Location = new System.Drawing.Point(370, 502);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(26, 15);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "gün";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label18.ForeColor = System.Drawing.Color.Gray;
+            this.label18.Location = new System.Drawing.Point(370, 537);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(30, 15);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "adet";
             // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 682);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(800, 660);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numMaxResCount);
@@ -301,8 +458,11 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "SettingsForm";
-            this.Text = "SettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sistem Ayarları";
             ((System.ComponentModel.ISupportInitialize)(this.numMaxLoanDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxBooksPerMember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLateFee)).EndInit();
@@ -339,5 +499,10 @@
         private System.Windows.Forms.NumericUpDown numMaxResCount;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }

@@ -75,12 +75,6 @@
       <DependentUpon>CreateReservationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\LibraryContext.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="LibrarianForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +121,12 @@
     </Compile>
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationManagementForm.Designer.cs">
+      <DependentUpon>ReservationManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReturnBookForm.cs">
       <SubType>Form</SubType>
@@ -179,11 +179,11 @@
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReservationManagementForm.resx">
+      <DependentUpon>ReservationManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReturnBookForm.resx">
       <DependentUpon>ReturnBookForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
