@@ -42,6 +42,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -71,6 +72,12 @@
     <Compile Include="BaseListForm.Designer.cs">
       <DependentUpon>BaseListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookDetailsForm.Designer.cs">
+      <DependentUpon>BookDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,11 +91,23 @@
       <DependentUpon>CreateReservationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\LibraryContext.cs" />
+    <Compile Include="LibrarianBookListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianBookListForm.Designer.cs">
+      <DependentUpon>LibrarianBookListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibrarianForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LibrarianForm.Designer.cs">
       <DependentUpon>LibrarianForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianReservationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianReservationForm.Designer.cs">
+      <DependentUpon>LibrarianReservationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoanBookForm.cs">
       <SubType>Form</SubType>
@@ -105,6 +124,12 @@
     <Compile Include="LoginForm.cs" />
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberDetailsForm.Designer.cs">
+      <DependentUpon>MemberDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MemberManagementForm.cs">
       <SubType>Form</SubType>
@@ -127,12 +152,19 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Loan.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickBookSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickBookSearchForm.Designer.cs">
+      <DependentUpon>QuickBookSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +176,12 @@
     </Compile>
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationListForm.Designer.cs">
+      <DependentUpon>ReservationListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReservationManagementForm.cs">
       <SubType>Form</SubType>
@@ -220,11 +258,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuickBookSearchForm.resx">
+      <DependentUpon>QuickBookSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationListForm.resx">
+      <DependentUpon>ReservationListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReservationManagementForm.resx">
       <DependentUpon>ReservationManagementForm.cs</DependentUpon>

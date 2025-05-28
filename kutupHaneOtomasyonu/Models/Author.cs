@@ -16,6 +16,8 @@ namespace kutupHaneOtomasyonu.Models
         public string Name { get; set; }
 
         public string Biography { get; set; }
+        
+
 
         public virtual ICollection<Book> Books { get; set; }
     }

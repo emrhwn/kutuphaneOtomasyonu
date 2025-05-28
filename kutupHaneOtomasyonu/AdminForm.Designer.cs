@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -33,11 +30,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRezervasyonlar = new System.Windows.Forms.Button();
+            this.btnEmanetler = new System.Windows.Forms.Button();
             this.btnRaporlar = new System.Windows.Forms.Button();
             this.btnUyeler = new System.Windows.Forms.Button();
             this.btnKitaplar = new System.Windows.Forms.Button();
             this.btnKullanicilar = new System.Windows.Forms.Button();
-            this.btnEmanetler = new System.Windows.Forms.Button();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.btnCikis = new System.Windows.Forms.Button();
@@ -65,7 +63,7 @@
             this.lblWelcome.ForeColor = System.Drawing.Color.White;
             this.lblWelcome.Location = new System.Drawing.Point(12, 70);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(140, 20);
+            this.lblWelcome.Size = new System.Drawing.Size(158, 20);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Hoş geldiniz, Admin";
             // 
@@ -76,7 +74,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(250, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 46);
+            this.label1.Size = new System.Drawing.Size(313, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "ADMİN PANELİ";
             // 
@@ -92,18 +90,47 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRezervasyonlar);
             this.groupBox1.Controls.Add(this.btnEmanetler);
             this.groupBox1.Controls.Add(this.btnRaporlar);
             this.groupBox1.Controls.Add(this.btnUyeler);
             this.groupBox1.Controls.Add(this.btnKitaplar);
             this.groupBox1.Controls.Add(this.btnKullanicilar);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox1.Location = new System.Drawing.Point(200, 20);
+            this.groupBox1.Location = new System.Drawing.Point(150, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(400, 280);
+            this.groupBox1.Size = new System.Drawing.Size(500, 245);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Yönetim İşlemleri";
+            // 
+            // btnRezervasyonlar
+            // 
+            this.btnRezervasyonlar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.btnRezervasyonlar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRezervasyonlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnRezervasyonlar.ForeColor = System.Drawing.Color.White;
+            this.btnRezervasyonlar.Location = new System.Drawing.Point(260, 120);
+            this.btnRezervasyonlar.Name = "btnRezervasyonlar";
+            this.btnRezervasyonlar.Size = new System.Drawing.Size(220, 40);
+            this.btnRezervasyonlar.TabIndex = 5;
+            this.btnRezervasyonlar.Text = "📅 Rezervasyonlar";
+            this.btnRezervasyonlar.UseVisualStyleBackColor = false;
+            this.btnRezervasyonlar.Click += new System.EventHandler(this.btnRezervasyonlar_Click);
+            // 
+            // btnEmanetler
+            // 
+            this.btnEmanetler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnEmanetler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmanetler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEmanetler.ForeColor = System.Drawing.Color.White;
+            this.btnEmanetler.Location = new System.Drawing.Point(20, 170);
+            this.btnEmanetler.Name = "btnEmanetler";
+            this.btnEmanetler.Size = new System.Drawing.Size(220, 40);
+            this.btnEmanetler.TabIndex = 3;
+            this.btnEmanetler.Text = "📋 Emanet İşlemleri";
+            this.btnEmanetler.UseVisualStyleBackColor = false;
+            this.btnEmanetler.Click += new System.EventHandler(this.btnEmanetler_Click);
             // 
             // btnRaporlar
             // 
@@ -111,9 +138,9 @@
             this.btnRaporlar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRaporlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnRaporlar.ForeColor = System.Drawing.Color.White;
-            this.btnRaporlar.Location = new System.Drawing.Point(80, 220);
+            this.btnRaporlar.Location = new System.Drawing.Point(260, 170);
             this.btnRaporlar.Name = "btnRaporlar";
-            this.btnRaporlar.Size = new System.Drawing.Size(240, 40);
+            this.btnRaporlar.Size = new System.Drawing.Size(220, 40);
             this.btnRaporlar.TabIndex = 4;
             this.btnRaporlar.Text = "📊 Raporlar";
             this.btnRaporlar.UseVisualStyleBackColor = false;
@@ -125,9 +152,9 @@
             this.btnUyeler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUyeler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUyeler.ForeColor = System.Drawing.Color.White;
-            this.btnUyeler.Location = new System.Drawing.Point(80, 120);
+            this.btnUyeler.Location = new System.Drawing.Point(260, 70);
             this.btnUyeler.Name = "btnUyeler";
-            this.btnUyeler.Size = new System.Drawing.Size(240, 40);
+            this.btnUyeler.Size = new System.Drawing.Size(220, 40);
             this.btnUyeler.TabIndex = 2;
             this.btnUyeler.Text = "👥 Üyeleri Yönet";
             this.btnUyeler.UseVisualStyleBackColor = false;
@@ -139,9 +166,9 @@
             this.btnKitaplar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKitaplar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnKitaplar.ForeColor = System.Drawing.Color.White;
-            this.btnKitaplar.Location = new System.Drawing.Point(80, 70);
+            this.btnKitaplar.Location = new System.Drawing.Point(20, 120);
             this.btnKitaplar.Name = "btnKitaplar";
-            this.btnKitaplar.Size = new System.Drawing.Size(240, 40);
+            this.btnKitaplar.Size = new System.Drawing.Size(220, 40);
             this.btnKitaplar.TabIndex = 1;
             this.btnKitaplar.Text = "📚 Kitapları Yönet";
             this.btnKitaplar.UseVisualStyleBackColor = false;
@@ -153,27 +180,13 @@
             this.btnKullanicilar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKullanicilar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnKullanicilar.ForeColor = System.Drawing.Color.White;
-            this.btnKullanicilar.Location = new System.Drawing.Point(80, 20);
+            this.btnKullanicilar.Location = new System.Drawing.Point(20, 70);
             this.btnKullanicilar.Name = "btnKullanicilar";
-            this.btnKullanicilar.Size = new System.Drawing.Size(240, 40);
+            this.btnKullanicilar.Size = new System.Drawing.Size(220, 40);
             this.btnKullanicilar.TabIndex = 0;
             this.btnKullanicilar.Text = "👤 Kullanıcıları Yönet";
             this.btnKullanicilar.UseVisualStyleBackColor = false;
             this.btnKullanicilar.Click += new System.EventHandler(this.btnKullanicilar_Click);
-            // 
-            // btnEmanetler
-            // 
-            this.btnEmanetler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
-            this.btnEmanetler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmanetler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEmanetler.ForeColor = System.Drawing.Color.White;
-            this.btnEmanetler.Location = new System.Drawing.Point(80, 170);
-            this.btnEmanetler.Name = "btnEmanetler";
-            this.btnEmanetler.Size = new System.Drawing.Size(240, 40);
-            this.btnEmanetler.TabIndex = 3;
-            this.btnEmanetler.Text = "📋 Emanet İşlemleri";
-            this.btnEmanetler.UseVisualStyleBackColor = false;
-            this.btnEmanetler.Click += new System.EventHandler(this.btnEmanetler_Click);
             // 
             // panelFooter
             // 
@@ -193,7 +206,7 @@
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
             this.lblDateTime.Location = new System.Drawing.Point(12, 15);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(76, 18);
+            this.lblDateTime.Size = new System.Drawing.Size(75, 18);
             this.lblDateTime.TabIndex = 1;
             this.lblDateTime.Text = "Tarih/Saat";
             // 
@@ -232,10 +245,9 @@
             this.panelFooter.ResumeLayout(false);
             this.panelFooter.PerformLayout();
             this.ResumeLayout(false);
+
         }
-
         #endregion
-
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Label label1;
@@ -246,6 +258,7 @@
         private System.Windows.Forms.Button btnUyeler;
         private System.Windows.Forms.Button btnKitaplar;
         private System.Windows.Forms.Button btnKullanicilar;
+        private System.Windows.Forms.Button btnRezervasyonlar;
         private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Button btnCikis;

@@ -179,6 +179,21 @@ namespace kutupHaneOtomasyonu
                 }
             }
         }
+        // Rezervasyonlar butonu click eventi
+        private void btnRezervasyonlar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Admin için rezervasyon formu
+                CreateReservationForm reservationForm = new CreateReservationForm();
+                reservationForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Rezervasyon formu açılırken hata oluştu: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         // Menü Strip Events (eğer menü kullanıyorsanız)
         private void kitaplarToolStripMenuItem_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@ namespace kutupHaneOtomasyonu.Models
 
         [StringLength(100)]
         public string Publisher { get; set; }
+        public string Name { get; set; }
 
         public int PublicationYear { get; set; }
 
@@ -36,5 +37,7 @@ namespace kutupHaneOtomasyonu.Models
 
         public virtual ICollection<Loan> Loans { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
+        public string Description { get; set; } // BU SATIRI EKLEYİN
+
     }
 }

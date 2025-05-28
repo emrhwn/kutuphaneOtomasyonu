@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibrarianForm));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.lblWelcome = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.panelFooter = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.panelQuickStats.SuspendLayout();
@@ -75,7 +75,7 @@
             this.panelHeader.Controls.Add(this.label1);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1302, 98);
             this.panelHeader.TabIndex = 0;
@@ -83,8 +83,9 @@
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxProfile.Image")));
             this.pictureBoxProfile.Location = new System.Drawing.Point(40, 25);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(53, 49);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -123,7 +124,7 @@
             this.panelQuickStats.Controls.Add(this.lblTotalMembers);
             this.panelQuickStats.Controls.Add(this.lblTotalLoans);
             this.panelQuickStats.Location = new System.Drawing.Point(40, 123);
-            this.panelQuickStats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelQuickStats.Margin = new System.Windows.Forms.Padding(4);
             this.panelQuickStats.Name = "panelQuickStats";
             this.panelQuickStats.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
             this.panelQuickStats.Size = new System.Drawing.Size(1253, 98);
@@ -190,7 +191,7 @@
             this.groupBoxBooks.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBoxBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.groupBoxBooks.Location = new System.Drawing.Point(40, 246);
-            this.groupBoxBooks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxBooks.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxBooks.Name = "groupBoxBooks";
             this.groupBoxBooks.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
             this.groupBoxBooks.Size = new System.Drawing.Size(600, 197);
@@ -202,7 +203,7 @@
             // 
             this.txtSearchBook.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtSearchBook.Location = new System.Drawing.Point(213, 55);
-            this.txtSearchBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchBook.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchBook.Name = "txtSearchBook";
             this.txtSearchBook.Size = new System.Drawing.Size(359, 30);
             this.txtSearchBook.TabIndex = 1;
@@ -214,7 +215,7 @@
             this.btnBookDetails.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnBookDetails.ForeColor = System.Drawing.Color.White;
             this.btnBookDetails.Location = new System.Drawing.Point(307, 111);
-            this.btnBookDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBookDetails.Margin = new System.Windows.Forms.Padding(4);
             this.btnBookDetails.Name = "btnBookDetails";
             this.btnBookDetails.Size = new System.Drawing.Size(240, 43);
             this.btnBookDetails.TabIndex = 3;
@@ -229,7 +230,7 @@
             this.btnListBooks.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnListBooks.ForeColor = System.Drawing.Color.White;
             this.btnListBooks.Location = new System.Drawing.Point(27, 111);
-            this.btnListBooks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListBooks.Margin = new System.Windows.Forms.Padding(4);
             this.btnListBooks.Name = "btnListBooks";
             this.btnListBooks.Size = new System.Drawing.Size(240, 43);
             this.btnListBooks.TabIndex = 2;
@@ -244,7 +245,7 @@
             this.btnSearchBook.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSearchBook.ForeColor = System.Drawing.Color.White;
             this.btnSearchBook.Location = new System.Drawing.Point(27, 49);
-            this.btnSearchBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearchBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchBook.Name = "btnSearchBook";
             this.btnSearchBook.Size = new System.Drawing.Size(160, 43);
             this.btnSearchBook.TabIndex = 0;
@@ -261,7 +262,7 @@
             this.groupBoxLoans.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBoxLoans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.groupBoxLoans.Location = new System.Drawing.Point(693, 246);
-            this.groupBoxLoans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxLoans.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxLoans.Name = "groupBoxLoans";
             this.groupBoxLoans.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
             this.groupBoxLoans.Size = new System.Drawing.Size(600, 197);
@@ -276,7 +277,7 @@
             this.btnLoanHistory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLoanHistory.ForeColor = System.Drawing.Color.White;
             this.btnLoanHistory.Location = new System.Drawing.Point(167, 111);
-            this.btnLoanHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoanHistory.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoanHistory.Name = "btnLoanHistory";
             this.btnLoanHistory.Size = new System.Drawing.Size(267, 43);
             this.btnLoanHistory.TabIndex = 2;
@@ -291,7 +292,7 @@
             this.btnReturnBook.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnReturnBook.ForeColor = System.Drawing.Color.White;
             this.btnReturnBook.Location = new System.Drawing.Point(307, 49);
-            this.btnReturnBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReturnBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnReturnBook.Name = "btnReturnBook";
             this.btnReturnBook.Size = new System.Drawing.Size(240, 43);
             this.btnReturnBook.TabIndex = 1;
@@ -306,7 +307,7 @@
             this.btnLoanBook.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLoanBook.ForeColor = System.Drawing.Color.White;
             this.btnLoanBook.Location = new System.Drawing.Point(27, 49);
-            this.btnLoanBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoanBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoanBook.Name = "btnLoanBook";
             this.btnLoanBook.Size = new System.Drawing.Size(240, 43);
             this.btnLoanBook.TabIndex = 0;
@@ -322,7 +323,7 @@
             this.groupBoxMembers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBoxMembers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.groupBoxMembers.Location = new System.Drawing.Point(40, 468);
-            this.groupBoxMembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxMembers.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxMembers.Name = "groupBoxMembers";
             this.groupBoxMembers.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
             this.groupBoxMembers.Size = new System.Drawing.Size(600, 123);
@@ -337,7 +338,7 @@
             this.btnMemberReports.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMemberReports.ForeColor = System.Drawing.Color.White;
             this.btnMemberReports.Location = new System.Drawing.Point(307, 49);
-            this.btnMemberReports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMemberReports.Margin = new System.Windows.Forms.Padding(4);
             this.btnMemberReports.Name = "btnMemberReports";
             this.btnMemberReports.Size = new System.Drawing.Size(240, 43);
             this.btnMemberReports.TabIndex = 1;
@@ -352,7 +353,7 @@
             this.btnMemberDetails.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMemberDetails.ForeColor = System.Drawing.Color.White;
             this.btnMemberDetails.Location = new System.Drawing.Point(27, 49);
-            this.btnMemberDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMemberDetails.Margin = new System.Windows.Forms.Padding(4);
             this.btnMemberDetails.Name = "btnMemberDetails";
             this.btnMemberDetails.Size = new System.Drawing.Size(240, 43);
             this.btnMemberDetails.TabIndex = 0;
@@ -369,7 +370,7 @@
             this.groupBoxReservations.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBoxReservations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
             this.groupBoxReservations.Location = new System.Drawing.Point(693, 468);
-            this.groupBoxReservations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxReservations.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxReservations.Name = "groupBoxReservations";
             this.groupBoxReservations.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
             this.groupBoxReservations.Size = new System.Drawing.Size(600, 172);
@@ -384,7 +385,7 @@
             this.btnUpdateReservation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdateReservation.ForeColor = System.Drawing.Color.White;
             this.btnUpdateReservation.Location = new System.Drawing.Point(307, 105);
-            this.btnUpdateReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateReservation.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateReservation.Name = "btnUpdateReservation";
             this.btnUpdateReservation.Size = new System.Drawing.Size(240, 43);
             this.btnUpdateReservation.TabIndex = 2;
@@ -399,7 +400,7 @@
             this.btnCreateReservation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCreateReservation.ForeColor = System.Drawing.Color.White;
             this.btnCreateReservation.Location = new System.Drawing.Point(27, 105);
-            this.btnCreateReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateReservation.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateReservation.Name = "btnCreateReservation";
             this.btnCreateReservation.Size = new System.Drawing.Size(240, 43);
             this.btnCreateReservation.TabIndex = 1;
@@ -414,7 +415,7 @@
             this.btnListReservations.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnListReservations.ForeColor = System.Drawing.Color.White;
             this.btnListReservations.Location = new System.Drawing.Point(27, 49);
-            this.btnListReservations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListReservations.Margin = new System.Windows.Forms.Padding(4);
             this.btnListReservations.Name = "btnListReservations";
             this.btnListReservations.Size = new System.Drawing.Size(267, 43);
             this.btnListReservations.TabIndex = 0;
@@ -427,10 +428,9 @@
             this.panelFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.panelFooter.Controls.Add(this.btnExit);
             this.panelFooter.Controls.Add(this.btnReports);
-            this.panelFooter.Controls.Add(this.btnSettings);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFooter.Location = new System.Drawing.Point(0, 675);
-            this.panelFooter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelFooter.Margin = new System.Windows.Forms.Padding(4);
             this.panelFooter.Name = "panelFooter";
             this.panelFooter.Size = new System.Drawing.Size(1302, 74);
             this.panelFooter.TabIndex = 6;
@@ -442,7 +442,7 @@
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Location = new System.Drawing.Point(1133, 18);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(160, 37);
             this.btnExit.TabIndex = 2;
@@ -456,29 +456,14 @@
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnReports.ForeColor = System.Drawing.Color.White;
-            this.btnReports.Location = new System.Drawing.Point(227, 18);
-            this.btnReports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReports.Location = new System.Drawing.Point(13, 18);
+            this.btnReports.Margin = new System.Windows.Forms.Padding(4);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(160, 37);
             this.btnReports.TabIndex = 1;
             this.btnReports.Text = "📊 Raporlar";
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(40, 18);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(160, 37);
-            this.btnSettings.TabIndex = 0;
-            this.btnSettings.Text = "⚙️ Ayarlar";
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // LibrarianForm
             // 
@@ -494,7 +479,7 @@
             this.Controls.Add(this.panelQuickStats);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "LibrarianForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -545,6 +530,5 @@
         private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnReports;
-        private System.Windows.Forms.Button btnSettings;
     }
 }

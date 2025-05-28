@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Entity;
 using kutupHaneOtomasyonu.Data;
 using kutupHaneOtomasyonu.Models;
+using kutupHaneOtomasyonu.Forms;
 
 namespace kutupHaneOtomasyonu
 {
@@ -114,7 +115,7 @@ namespace kutupHaneOtomasyonu
             {
                 try
                 {
-                    // Entity Framework ile kullanıcı bilgilerini çek - HATA DÜZELTİLDİ
+                    // Entity Framework ile kullanıcı bilgilerini çek
                     _currentUser = _context.Users
                         .Where(u => u.UserId == _userId)
                         .FirstOrDefault();
@@ -231,6 +232,7 @@ namespace kutupHaneOtomasyonu
                             dataGridViewBooks.DataSource = searchResults;
                             dataGridViewBooks.Visible = true;
                         }
+
                         MessageBox.Show(searchResults.Count + " kitap bulundu.",
                             "Arama Sonucu", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -252,104 +254,81 @@ namespace kutupHaneOtomasyonu
         {
             try
             {
-                if (_context != null)
-                {
-                    // Entity Framework ile tüm kitapları çek
-                    var books = _context.Books
-                        .Include(b => b.Author)
-                        .Select(b => new
-                        {
-                            b.BookId,
-                            b.Title,
-                            AuthorName = b.Author.Name,
-                            b.Category,
-                            b.ISBN,
-                            b.Publisher,
-                            b.PublicationYear,
-                            b.TotalCopies,
-                            b.AvailableCopies
-                        })
-                        .ToList();
-
-                    DataGridView dataGridViewBooks = this.Controls.Find("dataGridViewBooks", true).FirstOrDefault() as DataGridView;
-                    if (dataGridViewBooks != null)
-                    {
-                        dataGridViewBooks.DataSource = books;
-                        dataGridViewBooks.Visible = true;
-                    }
-
-                    MessageBox.Show("Kitaplar başarıyla listelendi.",
-                        "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                // Kitap listesi formu
+                LibrarianBookListForm bookListForm = new LibrarianBookListForm();
+                bookListForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Kitaplar listelenirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Kitap listesi formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnBookDetails_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Kitap detayları görüntüleniyor...",
-                "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                // Kitap detayları formu
+                BookDetailsForm detailsForm = new BookDetailsForm();
+                detailsForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kitap detayları formu açılırken hata oluştu: " + ex.Message,
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
         #region Ödünç İşlemleri
         private void btnLoanBook_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Kitap ödünç verme işlemi...",
-                "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Form kapandıktan sonra istatistikleri güncelle
-            LoadQuickStats();
+            try
+            {
+                // Ödünç verme formu
+                LibrarianLoanForm loanForm = new LibrarianLoanForm(_userId);
+                loanForm.ShowDialog();
+
+                // Form kapandıktan sonra istatistikleri güncelle
+                LoadQuickStats();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ödünç verme formu açılırken hata oluştu: " + ex.Message,
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnReturnBook_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Kitap iade işlemi...",
-                "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Form kapandıktan sonra istatistikleri güncelle
-            LoadQuickStats();
+            try
+            {
+                // İade alma formu
+                LibrarianReturnForm returnForm = new LibrarianReturnForm(_userId);
+                returnForm.ShowDialog();
+
+                // Form kapandıktan sonra istatistikleri güncelle
+                LoadQuickStats();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("İade formu açılırken hata oluştu: " + ex.Message,
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLoanHistory_Click(object sender, EventArgs e)
         {
             try
             {
-                if (_context != null && _userId > 0)
-                {
-                    // Sadece kütüphanecinin kendi ödünç geçmişini göster
-                    var loanHistory = _context.Loans
-                        .Include(l => l.Book)
-                        .Where(l => l.MemberId == _userId)
-                        .Select(l => new
-                        {
-                            l.LoanId,
-                            BookTitle = l.Book.Title,
-                            l.LoanDate,
-                            l.DueDate,
-                            l.ReturnDate,
-                            l.FineAmount,
-                            Status = l.ReturnDate.HasValue ? "İade Edildi" :
-                                    (l.DueDate < DateTime.Now ? "Gecikmiş" : "Ödünç Verildi")
-                        })
-                        .ToList();
-
-                    DataGridView dataGridViewLoans = this.Controls.Find("dataGridViewLoans", true).FirstOrDefault() as DataGridView;
-                    if (dataGridViewLoans != null)
-                    {
-                        dataGridViewLoans.DataSource = loanHistory;
-                        dataGridViewLoans.Visible = true;
-                    }
-
-                    MessageBox.Show("Ödünç geçmişiniz başarıyla listelendi.",
-                        "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                // Ödünç geçmişi formu
+                LibrarianLoanHistoryForm historyForm = new LibrarianLoanHistoryForm(_userId);
+                historyForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ödünç geçmişi listelenirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Ödünç geçmişi formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -360,12 +339,13 @@ namespace kutupHaneOtomasyonu
         {
             try
             {
-                MessageBox.Show("Rezervasyonlar listeleniyor...",
-                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Rezervasyon listesi formu
+                ReservationListForm listForm = new ReservationListForm(_userId);
+                listForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Rezervasyonlar listelenirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Rezervasyon listesi açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -374,12 +354,13 @@ namespace kutupHaneOtomasyonu
         {
             try
             {
-                MessageBox.Show("Yeni rezervasyon oluşturuluyor...",
-                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Yeni rezervasyon formu
+                LibrarianReservationForm reservationForm = new LibrarianReservationForm(_userId);
+                reservationForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Rezervasyon oluşturulurken hata oluştu: " + ex.Message,
+                MessageBox.Show("Rezervasyon formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -388,12 +369,13 @@ namespace kutupHaneOtomasyonu
         {
             try
             {
-                MessageBox.Show("Rezervasyon güncelleniyor...",
-                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Rezervasyon güncelleme formu
+                LibrarianReservationUpdateForm updateForm = new LibrarianReservationUpdateForm(_userId);
+                updateForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Rezervasyon güncellenirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Rezervasyon güncelleme formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -404,29 +386,13 @@ namespace kutupHaneOtomasyonu
         {
             try
             {
-                if (_currentUser != null)
-                {
-                    StringBuilder userDetails = new StringBuilder();
-                    userDetails.AppendLine("Kullanıcı Adı: " + _currentUser.Username);
-
-                    if (!string.IsNullOrEmpty(_currentUser.Email))
-                        userDetails.AppendLine("E-posta: " + _currentUser.Email);
-
-                    if (!string.IsNullOrEmpty(_currentUser.Phone))
-                        userDetails.AppendLine("Telefon: " + _currentUser.Phone);
-
-                    MessageBox.Show(userDetails.ToString(), "Üye Bilgilerim",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Üye bilgileri yüklenemedi.",
-                        "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Üye detayları formu
+                MemberDetailsForm memberForm = new MemberDetailsForm(_userId);
+                memberForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Üye detayları gösterilirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Üye detayları formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -435,42 +401,32 @@ namespace kutupHaneOtomasyonu
         {
             try
             {
-                MessageBox.Show("Üye raporları görüntüleniyor...",
-                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Üye raporları formu
+                ReportForm reportsForm = new ReportForm();
+                reportsForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Üye raporları görüntülenirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Üye raporları formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
 
         #region Footer İşlemleri
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MessageBox.Show("Ayarlar açılıyor...",
-                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ayarlar açılırken hata oluştu: " + ex.Message,
-                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        // btnSettings_Click metodu kaldırıldı
 
         private void btnReports_Click(object sender, EventArgs e)
         {
             try
             {
-                MessageBox.Show("Raporlar görüntüleniyor...",
-                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Raporlar formu
+                ReportForm reportsForm = new ReportForm();
+                reportsForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Raporlar görüntülenirken hata oluştu: " + ex.Message,
+                MessageBox.Show("Raporlar formu açılırken hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
