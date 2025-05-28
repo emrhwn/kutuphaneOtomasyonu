@@ -71,6 +71,12 @@
     <Compile Include="BaseListForm.Designer.cs">
       <DependentUpon>BaseListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookManagementForm.Designer.cs">
+      <DependentUpon>BookManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateReservationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,9 +96,21 @@
     <Compile Include="LoanBookForm.Designer.cs">
       <DependentUpon>LoanBookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoanManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoanManagementForm.Designer.cs">
+      <DependentUpon>LoanManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs" />
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberManagementForm.Designer.cs">
+      <DependentUpon>MemberManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202505210021591_InitialCreate.cs" />
     <Compile Include="Migrations\202505210021591_InitialCreate.Designer.cs">
@@ -101,6 +119,10 @@
     <Compile Include="Migrations\202505212340039_AddEmailAndPhoneToUser.cs" />
     <Compile Include="Migrations\202505212340039_AddEmailAndPhoneToUser.Designer.cs">
       <DependentUpon>202505212340039_AddEmailAndPhoneToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505281742487_AddFineToLoan.cs" />
+    <Compile Include="Migrations\202505281742487_AddFineToLoan.Designer.cs">
+      <DependentUpon>202505281742487_AddFineToLoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
@@ -135,17 +157,32 @@
     <Compile Include="ReturnBookForm.Designer.cs">
       <DependentUpon>ReturnBookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchResultsForm.Designer.cs">
+      <DependentUpon>SearchResultsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagementForm.Designer.cs">
+      <DependentUpon>UserManagementForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseListForm.resx">
       <DependentUpon>BaseListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookManagementForm.resx">
+      <DependentUpon>BookManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateReservationForm.resx">
       <DependentUpon>CreateReservationForm.cs</DependentUpon>
@@ -156,14 +193,23 @@
     <EmbeddedResource Include="LoanBookForm.resx">
       <DependentUpon>LoanBookForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoanManagementForm.resx">
+      <DependentUpon>LoanManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberManagementForm.resx">
+      <DependentUpon>MemberManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505210021591_InitialCreate.resx">
       <DependentUpon>202505210021591_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505212340039_AddEmailAndPhoneToUser.resx">
       <DependentUpon>202505212340039_AddEmailAndPhoneToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505281742487_AddFineToLoan.resx">
+      <DependentUpon>202505281742487_AddFineToLoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -185,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnBookForm.resx">
       <DependentUpon>ReturnBookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagementForm.resx">
+      <DependentUpon>UserManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

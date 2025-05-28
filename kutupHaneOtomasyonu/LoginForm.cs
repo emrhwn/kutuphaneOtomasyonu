@@ -4,7 +4,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Newtonsoft.Json; // System.Text.Json yerine
+using Newtonsoft.Json;
+using System.Drawing;
 
 namespace kutupHaneOtomasyonu
 {
@@ -15,7 +16,6 @@ namespace kutupHaneOtomasyonu
         public string LastRole { get; set; }
         public string LastUsername { get; set; }
         public bool RememberMe { get; set; }
-
         public Settings()
         {
             SelectedRole = string.Empty;
@@ -52,25 +52,8 @@ namespace kutupHaneOtomasyonu
                     if (loadedSettings != null)
                     {
                         settings = loadedSettings;
-                        // Beni hatırla seçiliyse, bilgileri doldur
-                        if (settings.RememberMe)
-                        {
-                            txtUsername.Text = settings.LastUsername;
-                            chkRememberMe.Checked = true;
-                            // Son seçilen rolü otomatik seç
-                            if (!string.IsNullOrEmpty(settings.LastRole))
-                            {
-                                selectedRole = settings.LastRole;
-                                if (settings.LastRole == "Admin")
-                                {
-                                    ShowLoginPanel("🔐 Admin Girişi");
-                                }
-                                else if (settings.LastRole == "Kullanıcı")
-                                {
-                                    ShowLoginPanel("📚 Kütüphaneci Girişi");
-                                }
-                            }
-                        }
+                        // Settings yüklendi ama otomatik rol seçimi yapılmayacak
+                        // Kullanıcı manuel olarak rol seçecek
                     }
                 }
             }
@@ -100,13 +83,15 @@ namespace kutupHaneOtomasyonu
             btnAdminLogin.Click += BtnAdminLogin_Click;
             btnLibrarianLogin.Click += BtnLibrarianLogin_Click;
             btnLogin.Click += btnLogin_Click;
-            btnRegister.Click += btnRegister_Click; // KAYIT OL BUTONU İÇİN EKLENDİ
+            btnRegister.Click += btnRegister_Click;
             btnCancel.Click += BtnCancel_Click;
+            btnBack.Click += BtnBack_Click;
             chkShowPassword.CheckedChanged += ChkShowPassword_CheckedChanged;
             linkForgotPassword.LinkClicked += LinkForgotPassword_LinkClicked;
             txtPassword.KeyPress += TxtPassword_KeyPress;
+            txtUsername.KeyPress += TxtUsername_KeyPress;
 
-            // Form Load event'i
+            // Form event'leri
             this.Load += LoginForm_Load;
             this.FormClosing += LoginForm_FormClosing;
             this.FormClosed += LoginForm_FormClosed;
@@ -114,13 +99,24 @@ namespace kutupHaneOtomasyonu
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            // Her zaman rol seçim ekranından başla
             this.Height = 350;
-            if (string.IsNullOrEmpty(selectedRole))
-            {
-                panelLogin.Visible = false;
-                panelButtons.Visible = false;
-                panelRoleSelection.Visible = true;
-            }
+            selectedRole = "";
+            panelLogin.Visible = false;
+            panelButtons.Visible = false;
+            panelRoleSelection.Visible = true;
+
+            // Buton görünümlerini normal renklerle ayarla
+            ResetButtonAppearance();
+        }
+
+        private void ResetButtonAppearance()
+        {
+            // Normal renkler - soluk değil
+            btnAdminLogin.BackColor = Color.FromArgb(231, 76, 60); // Canlı kırmızı
+            btnLibrarianLogin.BackColor = Color.FromArgb(52, 152, 219); // Canlı mavi
+            btnAdminLogin.Text = "🔐 Admin\r\nGirişi";
+            btnLibrarianLogin.Text = "📚 Kütüphaneci\r\nGirişi";
         }
 
         private void BtnAdminLogin_Click(object sender, EventArgs e)
@@ -143,14 +139,46 @@ namespace kutupHaneOtomasyonu
             lblCurrentRole.Text = roleText;
             this.Height = 580;
 
-            if (string.IsNullOrEmpty(txtUsername.Text))
+            // Settings'i uygula - sadece aynı rol için
+            if (settings.RememberMe && selectedRole == settings.LastRole && !string.IsNullOrEmpty(settings.LastUsername))
             {
-                txtUsername.Focus();
+                txtUsername.Text = settings.LastUsername;
+                chkRememberMe.Checked = true;
+                txtPassword.Focus();
             }
             else
             {
-                txtPassword.Focus();
+                // Temiz başlangıç
+                txtUsername.Clear();
+                txtPassword.Clear();
+                chkRememberMe.Checked = false;
+                txtUsername.Focus();
             }
+        }
+
+        // GERİ BUTONU METODU
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            GoBackToRoleSelection();
+        }
+
+        private void GoBackToRoleSelection()
+        {
+            // Rol seçim ekranına dön
+            panelLogin.Visible = false;
+            panelButtons.Visible = false;
+            panelRoleSelection.Visible = true;
+            this.Height = 350;
+
+            // Formu temizle
+            txtUsername.Clear();
+            txtPassword.Clear();
+            chkShowPassword.Checked = false;
+            chkRememberMe.Checked = false;
+            selectedRole = "";
+
+            // Buton görünümlerini normal renklerle sıfırla
+            ResetButtonAppearance();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -182,7 +210,7 @@ namespace kutupHaneOtomasyonu
                 }
 
                 // Settings'i güncelle
-                settings.LastUsername = username;
+                settings.LastUsername = chkRememberMe.Checked ? username : "";
                 settings.LastRole = selectedRole;
                 settings.RememberMe = chkRememberMe.Checked;
                 settings.SelectedRole = selectedRole;
@@ -217,20 +245,8 @@ namespace kutupHaneOtomasyonu
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            panelLogin.Visible = false;
-            panelButtons.Visible = false;
-            panelRoleSelection.Visible = true;
-            this.Height = 350;
-            txtUsername.Clear();
-            txtPassword.Clear();
-            chkShowPassword.Checked = false;
-
-            if (!settings.RememberMe)
-            {
-                chkRememberMe.Checked = false;
-            }
-
-            selectedRole = "";
+            // İptal butonu da geri fonksiyonunu kullanır
+            GoBackToRoleSelection();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -245,7 +261,7 @@ namespace kutupHaneOtomasyonu
                     return;
                 }
 
-                // RegistrationForm varsa aç
+                // RegistrationForm'u aç
                 RegistrationForm registrationForm = new RegistrationForm();
                 registrationForm.SelectedRole = selectedRole;
 
@@ -254,7 +270,6 @@ namespace kutupHaneOtomasyonu
                     txtUsername.Text = registrationForm.RegisteredUsername;
                     txtPassword.Clear();
                     txtPassword.Focus();
-
                     MessageBox.Show("Kayıt başarılı! Şimdi giriş yapabilirsiniz.",
                         "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -284,14 +299,34 @@ namespace kutupHaneOtomasyonu
                 btnLogin_Click(sender, e);
                 e.Handled = true;
             }
+            else if (e.KeyChar == (char)Keys.Escape)
+            {
+                GoBackToRoleSelection();
+                e.Handled = true;
+            }
+        }
+
+        private void TxtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPassword.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyChar == (char)Keys.Escape)
+            {
+                GoBackToRoleSelection();
+                e.Handled = true;
+            }
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!settings.RememberMe)
+            // "Beni Hatırla" seçili değilse kullanıcı adını temizle
+            if (!chkRememberMe.Checked)
             {
-                settings.LastUsername = string.Empty;
-                settings.LastRole = string.Empty;
+                settings.LastUsername = "";
+                settings.RememberMe = false;
             }
             SaveSettings();
         }
@@ -303,6 +338,37 @@ namespace kutupHaneOtomasyonu
                 _context.Dispose();
             }
             Application.Exit();
+        }
+
+        // Form kapatılırken onay iste
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Uygulamadan çıkmak istediğinizden emin misiniz?",
+                    "Çıkış Onayı",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            base.OnFormClosing(e);
+        }
+
+        // ESC tuşu ile form genelinde geri gitme
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape && panelLogin.Visible)
+            {
+                GoBackToRoleSelection();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

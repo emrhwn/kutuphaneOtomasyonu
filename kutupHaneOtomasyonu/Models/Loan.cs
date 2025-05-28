@@ -29,5 +29,6 @@ namespace kutupHaneOtomasyonu.Models
 
         [Column(TypeName = "decimal")]
         public decimal FineAmount { get; set; }
+        public decimal? Fine { get; set; } // Bu satırı ekleyin
     }
 }

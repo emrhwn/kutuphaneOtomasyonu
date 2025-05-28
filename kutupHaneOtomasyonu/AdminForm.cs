@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using kutupHaneOtomasyonu.Forms; // Forms namespace'ini ekleyin
 
 namespace kutupHaneOtomasyonu
 {
@@ -17,73 +18,192 @@ namespace kutupHaneOtomasyonu
             InitializeComponent();
         }
 
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+            // Form yüklendiğinde yapılacak işlemler
+            this.Text = "Kütüphane Yönetim Sistemi - Admin Panel";
+
+            // Hoş geldin mesajı - SetText yerine Text kullanın
+            if (lblWelcome != null)
+            {
+                lblWelcome.Text = $"Hoş Geldiniz! Tarih: {DateTime.Now:dd.MM.yyyy}";
+            }
+        }
+
+        // Kitaplar Yönetimi
+        private void btnKitaplar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BookManagementForm bookForm = new BookManagementForm();
+                bookForm.ShowDialog(); // Modal olarak aç
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kitaplar formu açılırken hata oluştu: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Üyeler Yönetimi
+        private void btnUyeler_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MemberManagementForm memberForm = new MemberManagementForm();
+                memberForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Üyeler formu açılırken hata oluştu: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Emanetler (Ödünç Verme) Yönetimi
+        private void btnEmanetler_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoanManagementForm loanForm = new LoanManagementForm();
+                loanForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Emanetler formu açılırken hata oluştu: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Kullanıcılar Yönetimi (Sistem Kullanıcıları)
+        private void btnKullanicilar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Eğer UserManagementForm varsa
+                UserManagementForm userForm = new UserManagementForm();
+                userForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kullanıcılar formu açılırken hata oluştu: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Raporlar
+        private void btnRaporlar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Eğer ReportsForm varsa
+                ReportForm reportsForm = new ReportForm();
+                reportsForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Raporlar formu açılırken hata oluştu: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Eski button event'ler - geriye dönük uyumluluk için
         private void btnManageBooks_Click(object sender, EventArgs e)
         {
-            // Kitap yönetim formunu aç
-            MessageBox.Show("Kitap Yönetim Ekranı Açılacak");
+            btnKitaplar_Click(sender, e);
         }
 
         private void btnManageUsers_Click(object sender, EventArgs e)
         {
-            // Kullanıcı yönetim formunu aç
-            MessageBox.Show("Kullanıcı Yönetim Ekranı Açılacak");
+            btnUyeler_Click(sender, e);
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            // Rapor formunu aç
-            MessageBox.Show("Rapor Ekranı Açılacak");
+            btnRaporlar_Click(sender, e);
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        // Designer.cs dosyasında tanımlı olan event handler'lar
-        private void AdminForm_Load(object sender, EventArgs e)
-        {
-            // Form yüklendiğinde yapılacak işlemler
-        }
-
+        // Çıkış İşlemleri
         private void btnCikis_Click(object sender, EventArgs e)
         {
-            // Çıkış işlemi
-            DialogResult result = MessageBox.Show("Çıkmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(
+                "Kütüphane yönetim sisteminden çıkmak istediğinizden emin misiniz?",
+                "Çıkış Onayı",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
 
-        private void btnEmanetler_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            // Emanetler modülü
-            MessageBox.Show("Emanetler Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnCikis_Click(sender, e);
         }
 
-        private void btnKitaplar_Click(object sender, EventArgs e)
+        // Hızlı Erişim Metodları
+        private void OpenQuickStats()
         {
-            // Kitaplar modülü
-            MessageBox.Show("Kitaplar Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                // Hızlı istatistikler için basit bir form açabilirsiniz
+                MessageBox.Show("Hızlı İstatistikler:\n" +
+                    "• Toplam Kitap: [Veritabanından çekilecek]\n" +
+                    "• Aktif Üye: [Veritabanından çekilecek]\n" +
+                    "• Ödünçte Kitap: [Veritabanından çekilecek]",
+                    "Sistem Özeti", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"İstatistikler yüklenirken hata: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void btnKullanicilar_Click(object sender, EventArgs e)
+        // Form kapanırken
+        private void AdminForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Kullanıcılar modülü
-            MessageBox.Show("Kullanıcılar Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Uygulamayı kapatmak istediğinizden emin misiniz?",
+                    "Çıkış",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
-        private void btnRaporlar_Click(object sender, EventArgs e)
+        // Menü Strip Events (eğer menü kullanıyorsanız)
+        private void kitaplarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Raporlar modülü
-            MessageBox.Show("Raporlar Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnKitaplar_Click(sender, e);
         }
 
-        private void btnUyeler_Click(object sender, EventArgs e)
+        private void üyelerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Üyeler modülü
-            MessageBox.Show("Üyeler Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnUyeler_Click(sender, e);
+        }
+
+        private void emanetlerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnEmanetler_Click(sender, e);
+        }
+
+        private void raporlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnRaporlar_Click(sender, e);
+        }
+
+        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCikis_Click(sender, e);
         }
     }
 }
