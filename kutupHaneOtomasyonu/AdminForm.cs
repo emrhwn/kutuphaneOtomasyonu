@@ -39,6 +39,51 @@ namespace kutupHaneOtomasyonu
         {
             Application.Exit();
         }
+
+        // Designer.cs dosyasında tanımlı olan event handler'lar
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+            // Form yüklendiğinde yapılacak işlemler
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            // Çıkış işlemi
+            DialogResult result = MessageBox.Show("Çıkmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnEmanetler_Click(object sender, EventArgs e)
+        {
+            // Emanetler modülü
+            MessageBox.Show("Emanetler Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnKitaplar_Click(object sender, EventArgs e)
+        {
+            // Kitaplar modülü
+            MessageBox.Show("Kitaplar Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnKullanicilar_Click(object sender, EventArgs e)
+        {
+            // Kullanıcılar modülü
+            MessageBox.Show("Kullanıcılar Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnRaporlar_Click(object sender, EventArgs e)
+        {
+            // Raporlar modülü
+            MessageBox.Show("Raporlar Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnUyeler_Click(object sender, EventArgs e)
+        {
+            // Üyeler modülü
+            MessageBox.Show("Üyeler Yönetim Ekranı Açılacak", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
-

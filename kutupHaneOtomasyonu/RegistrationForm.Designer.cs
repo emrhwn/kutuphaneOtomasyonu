@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.groupBoxPersonalInfo = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxAccountInfo = new System.Windows.Forms.GroupBox();
+            this.lblUsernameError = new System.Windows.Forms.Label();
             this.chkShowPassword = new System.Windows.Forms.CheckBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -67,7 +68,7 @@
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.panelHeader.Controls.Add(this.pictureBoxIcon);
-            this.panelHeader.Controls.Add(this.label1);
+            this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
@@ -84,16 +85,16 @@
             this.pictureBoxIcon.TabIndex = 1;
             this.pictureBoxIcon.TabStop = false;
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(250, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "👤 ÜYE KAYDI";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(250, 24);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(200, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "👤 ÜYE KAYDI";
             // 
             // groupBoxPersonalInfo
             // 
@@ -175,6 +176,7 @@
             // groupBoxAccountInfo
             // 
             this.groupBoxAccountInfo.BackColor = System.Drawing.Color.White;
+            this.groupBoxAccountInfo.Controls.Add(this.lblUsernameError);
             this.groupBoxAccountInfo.Controls.Add(this.chkShowPassword);
             this.groupBoxAccountInfo.Controls.Add(this.txtConfirmPassword);
             this.groupBoxAccountInfo.Controls.Add(this.txtPassword);
@@ -191,6 +193,18 @@
             this.groupBoxAccountInfo.TabIndex = 2;
             this.groupBoxAccountInfo.TabStop = false;
             this.groupBoxAccountInfo.Text = "🔐 Hesap Bilgileri";
+            // 
+            // lblUsernameError
+            // 
+            this.lblUsernameError.AutoSize = true;
+            this.lblUsernameError.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblUsernameError.ForeColor = System.Drawing.Color.Red;
+            this.lblUsernameError.Location = new System.Drawing.Point(25, 88);
+            this.lblUsernameError.Name = "lblUsernameError";
+            this.lblUsernameError.Size = new System.Drawing.Size(159, 13);
+            this.lblUsernameError.TabIndex = 7;
+            this.lblUsernameError.Text = "Kullanıcı adı boşluk içeremez";
+            this.lblUsernameError.Visible = false;
             // 
             // label2
             // 
@@ -210,13 +224,14 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(250, 25);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(20, 95);
+            this.label3.Location = new System.Drawing.Point(20, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 19);
             this.label3.TabIndex = 2;
@@ -225,10 +240,10 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtPassword.Location = new System.Drawing.Point(95, 92);
+            this.txtPassword.Location = new System.Drawing.Point(65, 105);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(120, 25);
+            this.txtPassword.Size = new System.Drawing.Size(100, 25);
             this.txtPassword.TabIndex = 3;
             // 
             // label7
@@ -236,19 +251,19 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label7.Location = new System.Drawing.Point(20, 125);
+            this.label7.Location = new System.Drawing.Point(20, 138);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 19);
+            this.label7.Size = new System.Drawing.Size(44, 19);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Şifre Tekrar:";
+            this.label7.Text = "Tekrar:";
             // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(105, 122);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(65, 135);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '●';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(110, 25);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(100, 25);
             this.txtConfirmPassword.TabIndex = 5;
             // 
             // chkShowPassword
@@ -256,12 +271,13 @@
             this.chkShowPassword.AutoSize = true;
             this.chkShowPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chkShowPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.chkShowPassword.Location = new System.Drawing.Point(220, 95);
+            this.chkShowPassword.Location = new System.Drawing.Point(170, 108);
             this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(62, 19);
+            this.chkShowPassword.Size = new System.Drawing.Size(102, 19);
             this.chkShowPassword.TabIndex = 6;
-            this.chkShowPassword.Text = "Göster";
+            this.chkShowPassword.Text = "Şifreyi Göster";
             this.chkShowPassword.UseVisualStyleBackColor = true;
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.ChkShowPassword_CheckedChanged);
             // 
             // groupBoxAddress
             // 
@@ -367,6 +383,7 @@
             this.btnRegister.TabIndex = 0;
             this.btnRegister.Text = "✅ Kayıt Ol";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnCancel
             // 
@@ -380,6 +397,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "❌ İptal";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // RegistrationForm
             // 
@@ -398,6 +416,7 @@
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Üye Kayıt Sistemi";
+            this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
@@ -417,7 +436,7 @@
 
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.GroupBox groupBoxPersonalInfo;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.MaskedTextBox txtPhone;
@@ -426,6 +445,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBoxAccountInfo;
+        private System.Windows.Forms.Label lblUsernameError;
         private System.Windows.Forms.CheckBox chkShowPassword;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.TextBox txtPassword;
