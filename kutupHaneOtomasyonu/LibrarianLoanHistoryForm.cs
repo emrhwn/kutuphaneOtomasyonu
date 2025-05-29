@@ -281,7 +281,12 @@ namespace kutupHaneOtomasyonu.Forms
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
+        // Public method to refresh loan history
+        public void RefreshLoanHistory()
+        {
+            LoadLoanHistory();
+            UpdateStatistics();
+        }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {

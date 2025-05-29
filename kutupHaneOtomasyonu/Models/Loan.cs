@@ -21,15 +21,19 @@ namespace kutupHaneOtomasyonu.Models
         public int MemberId { get; set; }
         public virtual Member Member { get; set; }
 
+        [Column(TypeName = "datetime")]
         public DateTime LoanDate { get; set; }
 
+        [Column(TypeName = "datetime")]
         public DateTime DueDate { get; set; }
 
+        [Column(TypeName = "datetime")]
         public DateTime? ReturnDate { get; set; }
 
         [Column(TypeName = "decimal")]
         public decimal FineAmount { get; set; }
-        public decimal? Fine { get; set; } // Bu satırı ekleyin
+        [Column(TypeName = "decimal")]
+        public decimal? Fine { get; set; }
 
         public string Notes { get; set; }
 

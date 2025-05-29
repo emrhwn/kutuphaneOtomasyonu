@@ -47,11 +47,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgvReportResults = new System.Windows.Forms.DataGridView();
             this.rtbReportSummary = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.dgvReportResults = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -60,8 +60,8 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReportResults)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReportResults)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -291,23 +291,6 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
-            // dgvReportResults
-            // 
-            this.dgvReportResults.AllowUserToAddRows = false;
-            this.dgvReportResults.AllowUserToDeleteRows = false;
-            this.dgvReportResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReportResults.BackgroundColor = System.Drawing.Color.White;
-            this.dgvReportResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReportResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReportResults.Location = new System.Drawing.Point(0, 0);
-            this.dgvReportResults.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dgvReportResults.Name = "dgvReportResults";
-            this.dgvReportResults.ReadOnly = true;
-            this.dgvReportResults.RowHeadersWidth = 51;
-            this.dgvReportResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReportResults.Size = new System.Drawing.Size(894, 461);
-            this.dgvReportResults.TabIndex = 0;
-            // 
             // rtbReportSummary
             // 
             this.rtbReportSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -367,6 +350,23 @@
             this.btnExport.UseVisualStyleBackColor = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // dgvReportResults
+            // 
+            this.dgvReportResults.AllowUserToAddRows = false;
+            this.dgvReportResults.AllowUserToDeleteRows = false;
+            this.dgvReportResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReportResults.BackgroundColor = System.Drawing.Color.White;
+            this.dgvReportResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReportResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvReportResults.Location = new System.Drawing.Point(0, 0);
+            this.dgvReportResults.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvReportResults.Name = "dgvReportResults";
+            this.dgvReportResults.ReadOnly = true;
+            this.dgvReportResults.RowHeadersWidth = 51;
+            this.dgvReportResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReportResults.Size = new System.Drawing.Size(894, 461);
+            this.dgvReportResults.TabIndex = 0;
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -392,8 +392,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReportResults)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReportResults)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -419,9 +419,9 @@
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Button btnGenerateReport;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dgvReportResults;
         private System.Windows.Forms.RichTextBox rtbReportSummary;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView dgvReportResults;
     }
 }

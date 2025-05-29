@@ -19,14 +19,30 @@ namespace kutupHaneOtomasyonu.Models
 
         [ForeignKey("Member")]
         public int MemberId { get; set; }
+
+        [Column(TypeName = "datetime")]
         public DateTime ExpiryDate { get; set; }
         public bool IsActive { get; set; }
         public string Notes { get; set; }
+
+        public bool NotificationSent { get; set; } // BUNU EKLEYİN
+
+        [Column(TypeName = "datetime")]
+        public DateTime? CompletedDate { get; set; } // BUNU EKLEYİN
+
+        [Column(TypeName = "datetime")]
+        public DateTime? CancelledDate { get; set; } // BUNU EKLEYİN
+
+        [StringLength(200)]
+        public string CancellationReason { get; set; } // BUNU EKLEYİN
+
+        public int? QueuePosition { get; set; }
         public virtual Member Member { get; set; }
         public int? CreatedByUserId { get; set; }
 
         public virtual User CreatedByUser { get; set; }
 
+        [Column(TypeName = "datetime")]
         public DateTime ReservationDate { get; set; }
 
         [Required, StringLength(20)]

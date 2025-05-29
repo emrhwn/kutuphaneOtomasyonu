@@ -4,6 +4,11 @@ using System.Linq;
 using System.Windows.Forms;
 using kutupHaneOtomasyonu.Data;
 using System.Drawing;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.Rendering;
+using MigraDoc.DocumentObjectModel.Tables;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 
 namespace kutupHaneOtomasyonu.Forms
 {
@@ -48,7 +53,7 @@ namespace kutupHaneOtomasyonu.Forms
             var categories = _context.Books
                 .Select(b => b.Category)
                 .Distinct()
-                .OrderBy(c => c)
+                .OrderBy(c => c.Name)
                 .ToList();
 
             foreach (var category in categories)
@@ -131,7 +136,7 @@ namespace kutupHaneOtomasyonu.Forms
 
             if (category != "Tümü" && !string.IsNullOrEmpty(category))
             {
-                query = query.Where(b => b.Category == category);
+                query = query.Where(b => b.Category.Name == category);
             }
 
             var books = query.Select(b => new
@@ -139,7 +144,7 @@ namespace kutupHaneOtomasyonu.Forms
                 b.Title,
                 Author = b.Author.Name,
                 b.ISBN,
-                b.Category,
+                Category = b.Category.Name,
                 b.Publisher,
                 b.PublicationYear,
                 b.TotalCopies,
@@ -354,7 +359,7 @@ namespace kutupHaneOtomasyonu.Forms
 
             // Özet bilgi
             rtbReportSummary.Text = $"YAZAR İSTATİSTİKLERİ RAPORU\n";
-            rtbReportSummary.AppendText($"Rapor Tarihi: {DateTime.Now:dd.MM.yyyy HH:mm}\n\n");
+            rtbReportSummary.AppendText($"Rapor Tarihi: {DateTime.Now:dd.MM.yyyy HH:mm}\n");
             rtbReportSummary.AppendText($"Toplam Yazar Sayısı: {authorStats.Count}\n");
             rtbReportSummary.AppendText($"En Üretken Yazar: {(authorStats.Any() ? authorStats.First().Author : "-")}\n");
             rtbReportSummary.AppendText($"Kitap Sayısı: {(authorStats.Any() ? authorStats.First().BookCount : 0)}");
@@ -384,7 +389,7 @@ namespace kutupHaneOtomasyonu.Forms
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            if (dgvReportResults.Rows.Count == 0)
+            if (dgvReportResults.Rows.Count == 0 && string.IsNullOrWhiteSpace(rtbReportSummary.Text))
             {
                 MessageBox.Show("Dışa aktarılacak veri bulunamadı.", "Uyarı",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -392,7 +397,7 @@ namespace kutupHaneOtomasyonu.Forms
             }
 
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "CSV Dosyası|*.csv|Excel Dosyası|*.xlsx";
+            saveDialog.Filter = "PDF Dosyası|*.pdf|CSV Dosyası|*.csv";
             saveDialog.Title = "Raporu Kaydet";
             saveDialog.FileName = $"Rapor_{DateTime.Now:yyyyMMdd_HHmmss}";
 
@@ -400,9 +405,27 @@ namespace kutupHaneOtomasyonu.Forms
             {
                 try
                 {
-                    // CSV export implementation
-                    MessageBox.Show("Rapor başarıyla kaydedildi.", "Başarılı",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string filePath = saveDialog.FileName;
+                    string fileExtension = System.IO.Path.GetExtension(filePath).ToLower();
+
+                    if (fileExtension == ".csv")
+                    {
+                        // Mevcut CSV export implementation
+                        MessageBox.Show("Rapor başarıyla CSV olarak kaydedildi.", "Başarılı",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (fileExtension == ".pdf")
+                    {
+                        // PDF export implementation
+                        ExportToPdf(filePath);
+                        MessageBox.Show("Rapor başarıyla PDF olarak kaydedildi.", "Başarılı",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Desteklenmeyen dosya formatı seçildi.", "Hata",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -410,6 +433,86 @@ namespace kutupHaneOtomasyonu.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void ExportToPdf(string filePath)
+        {
+            // 1. Doküman Oluştur
+            Document document = new Document();
+            document.Info.Title = "Kütüphane Otomasyonu Raporu";
+
+            // 2. Bölüm Ekle
+            Section section = document.AddSection();
+            section.PageSetup.PageFormat = PageFormat.A4;
+
+            // 3. Başlık Ekle
+            Paragraph heading = section.AddParagraph("Rapor Sonuçları");
+            heading.Format.Font.Size = 16;
+            heading.Format.Font.Bold = true;
+            heading.Format.SpaceAfter = Unit.FromCentimeter(1);
+
+            // 4. Özet Metnini Ekle
+            Paragraph summary = section.AddParagraph(rtbReportSummary.Text);
+            summary.Format.SpaceAfter = Unit.FromCentimeter(1);
+
+            // 5. Tablo Oluştur ve DataGridView Verilerini Ekle
+            if (dgvReportResults.Rows.Count > 0)
+            {
+                Table table = section.AddTable();
+                table.Style = "Table";
+                table.Borders.Color = Colors.Black;
+                table.Borders.Width = 0.25;
+                table.Borders.Left.Width = 0.5;
+                table.Borders.Right.Width = 0.5;
+                table.Rows.LeftIndent = 0;
+
+                // Sütunları Ekle
+                foreach (DataGridViewColumn dgvCol in dgvReportResults.Columns)
+                {
+                     Column column = table.AddColumn();
+                     column.Format.Alignment = ParagraphAlignment.Center;
+                     // İsteğe bağlı: Sütun genişliğini ayarlayabilirsiniz
+                     // column.Width = Unit.FromCentimeter(3); // Örnek genişlik
+                }
+
+                // Başlık Satırını Ekle
+                Row headerRow = table.AddRow();
+                headerRow.Format.Font.Bold = true;
+                headerRow.Shading.Color = Colors.LightGray;
+                for (int i = 0; i < dgvReportResults.Columns.Count; i++)
+                {
+                    headerRow.Cells[i].AddParagraph(dgvReportResults.Columns[i].HeaderText);
+                }
+
+                // Veri Satırlarını Ekle
+                foreach (DataGridViewRow dgvRow in dgvReportResults.Rows)
+                {
+                    // Eğer DataGridView'de boş satır varsa atla
+                    if (dgvRow.IsNewRow) continue;
+
+                    Row dataRow = table.AddRow();
+                     for (int i = 0; i < dgvRow.Cells.Count; i++)
+                     {
+                         // Hücre değeri null ise boş string kullan
+                         dataRow.Cells[i].AddParagraph(dgvRow.Cells[i].Value?.ToString() ?? string.Empty);
+                     }
+                }
+            }
+            else
+            {
+                 section.AddParagraph("Detaylı rapor sonucu bulunamadı.");
+            }
+
+
+            // 6. PDF Render Et ve Kaydet (PDFsharp veya MigraDoc Rendering)
+            // GDI+ hatalarını önlemek için bu satır gerekebilir:
+            // PdfSharp.Drawing.XGraphics.PdfRenderer = PdfSharp.Drawing.PdfRenderer.Gdi;
+
+            PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true);
+            pdfRenderer.Document = document;
+            pdfRenderer.RenderDocument();
+            pdfRenderer.PdfDocument.Version = 14;
+            pdfRenderer.PdfDocument.Save(filePath);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

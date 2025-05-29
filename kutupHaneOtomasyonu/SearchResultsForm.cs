@@ -38,7 +38,7 @@ namespace kutupHaneOtomasyonu.Forms
                 .Where(b => b.Title.ToLower().Contains(_searchText.ToLower()) ||
                            b.ISBN.Contains(_searchText) ||
                            b.Author.Name.ToLower().Contains(_searchText.ToLower()) ||
-                           b.Category.ToLower().Contains(_searchText.ToLower()) ||
+                           b.Category.Name.ToLower().Contains(_searchText.ToLower()) ||
                            b.Publisher.ToLower().Contains(_searchText.ToLower()))
                 .Select(b => new
                 {
@@ -70,7 +70,7 @@ namespace kutupHaneOtomasyonu.Forms
                 dgvBooks.Columns["AvailableCopies"].HeaderText = "Mevcut";
             }
 
-            lblBooksCount.Text = $"Kitaplar ({books.Count})";
+            lblBooksCount.Text = $"Kitaplar ({books.Count()})";
         }
 
         private void SearchMembers()
@@ -140,7 +140,7 @@ namespace kutupHaneOtomasyonu.Forms
                 dgvAuthors.Columns["AvailableCopies"].HeaderText = "Mevcut Kopya";
             }
 
-            lblAuthorsCount.Text = $"Yazarlar ({authors.Count})";
+            lblAuthorsCount.Text = $"Yazarlar ({authors.Count()})";
         }
 
         private void UpdateSummary()

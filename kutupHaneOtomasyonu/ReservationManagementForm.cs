@@ -120,6 +120,7 @@ namespace kutupHaneOtomasyonu
             _isNewReservation = false;
             ClearForm();
             SetupFormMode();
+            LoadReservations(); // Mevcut rezervasyonları yükle
         }
 
         private void ClearForm()
@@ -139,7 +140,7 @@ namespace kutupHaneOtomasyonu
 
         private void btnFindReservation_Click(object sender, EventArgs e)
         {
-            // Rezervasyon bul
+            // Rezervasyon bul (Bu metot mevcut rezervasyonları listelemek için kullanılmayacak)
             MessageBox.Show("Rezervasyon aranıyor...", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -177,6 +178,46 @@ namespace kutupHaneOtomasyonu
         {
             // İptal et ve formu kapat
             this.Close();
+        }
+
+        // Yeni metot: Mevcut rezervasyonları yükle
+        private void LoadReservations()
+        {
+            try
+            {
+                var reservations = _context.Reservations
+                    .Select(r => new
+                    {
+                        ReservationId = r.ReservationId,
+                        BookTitle = r.Book.Title,
+                        MemberName = r.Member.FirstName + " " + r.Member.LastName,
+                        ReservationDate = r.ReservationDate,
+                        ExpiryDate = r.ExpiryDate,
+                        Status = r.Status
+                    })
+                    .OrderByDescending(r => r.ReservationDate)
+                    .ToList();
+
+                // DataGridView'e veriyi ata (dgvReservations isimli bir DataGridView'in form tasarımına eklendiğini varsayıyoruz)
+                // Eğer DataGridView'iniz farklı bir isimdeyse, aşağıdaki satırı güncelleyin:
+                // yourDataGridViewName.DataSource = reservations;
+
+                // Örnek: Formda bir DataGridView kontrolü olduğunu varsayarak:
+                 if (this.Controls.Find("dgvReservations", true).FirstOrDefault() is DataGridView dgv)
+                 {
+                     dgv.DataSource = reservations;
+                 }
+                 else
+                 {
+                     // DataGridView bulunamadıysa hata mesajı veya loglama ekleyebilirsiniz
+                     MessageBox.Show("Rezervasyonları listelemek için dgvReservations adında bir DataGridView kontrolü bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Mevcut rezervasyonlar yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

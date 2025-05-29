@@ -95,7 +95,7 @@ namespace kutupHaneOtomasyonu.Forms
             try
             {
                 var books = _context.Books
-                    .Where(b => b.AvailableCopies == 0) // Sadece stokta olmayan kitaplar
+                    // .Where(b => b.AvailableCopies == 0) // Temporarily commented out to test if any books load
                     .Select(b => new
                     {
                         b.BookId,

@@ -38,13 +38,19 @@ namespace kutupHaneOtomasyonu.Models
         [StringLength(20)]
         public string Role { get; set; }  // "Admin", "Kullanıcı"
 
-        [Column(TypeName = "datetime2")]
+        [Column(TypeName = "datetime")]
         public DateTime CreatedDate { get; set; }
 
-        [Column(TypeName = "datetime2")]
+        [Column(TypeName = "datetime")]
         public DateTime? LastLoginDate { get; set; }
 
+        [NotMapped] // Veritabanına map edilmeyecek
+        public string FullName { get; set; }
+
         public bool IsActive { get; set; }
+
+        // Eklenen: Kullanıcının ilişkili olduğu üye kaydının ID'si (nullable)
+        public int? MemberId { get; set; }
 
         // Constructor
         public User()

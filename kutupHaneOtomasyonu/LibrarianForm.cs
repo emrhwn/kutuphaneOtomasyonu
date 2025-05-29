@@ -21,6 +21,9 @@ namespace kutupHaneOtomasyonu
         private User _currentUser;
         private string placeholderText = "Kitap adı veya ISBN...";
 
+        // Eklenen: Açık olan Ödünç Geçmişi formu referansı
+        private LibrarianLoanHistoryForm _loanHistoryForm;
+
         // Parametresiz yapıcı metot
         public LibrarianForm()
         {
@@ -292,6 +295,12 @@ namespace kutupHaneOtomasyonu
 
                 // Form kapandıktan sonra istatistikleri güncelle
                 LoadQuickStats();
+
+                // Eğer ödünç geçmişi formu açıksa, onu da yenile
+                if (_loanHistoryForm != null)
+                {
+                    _loanHistoryForm.RefreshLoanHistory();
+                }
             }
             catch (Exception ex)
             {
@@ -323,8 +332,9 @@ namespace kutupHaneOtomasyonu
             try
             {
                 // Ödünç geçmişi formu
-                LibrarianLoanHistoryForm historyForm = new LibrarianLoanHistoryForm(_userId);
-                historyForm.ShowDialog();
+                _loanHistoryForm = new LibrarianLoanHistoryForm(_userId);
+                _loanHistoryForm.FormClosed += (s, args) => _loanHistoryForm = null; // Form kapandığında referansı temizle
+                _loanHistoryForm.ShowDialog();
             }
             catch (Exception ex)
             {

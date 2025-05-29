@@ -238,8 +238,9 @@ namespace kutupHaneOtomasyonu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Giriş sırasında bir hata oluştu: " + ex.Message, "Hata",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Giriş sırasında bir hata oluştu: " + ex.Message +
+                                (ex.InnerException != null ? "\\nInner Exception: " + ex.InnerException.Message : ""),
+                                "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

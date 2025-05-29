@@ -43,7 +43,7 @@ namespace kutupHaneOtomasyonu.Forms
                         b.Publisher,
                         b.TotalCopies,
                         b.AvailableCopies,
-                        CategoryName = b.Category, // String olarak direkt kullan
+                        CategoryName = b.Category.Name,
                         b.Description
                     })
                     .FirstOrDefault();

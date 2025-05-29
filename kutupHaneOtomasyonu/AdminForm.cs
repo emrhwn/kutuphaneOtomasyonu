@@ -45,17 +45,17 @@ namespace kutupHaneOtomasyonu
             }
         }
 
-        // Üyeler Yönetimi
-        private void btnUyeler_Click(object sender, EventArgs e)
+        // Ayarlar - Üyeler yerine
+        private void btnAyarlar_Click(object sender, EventArgs e)
         {
             try
             {
-                MemberManagementForm memberForm = new MemberManagementForm();
-                memberForm.ShowDialog();
+                SettingsForm settingsForm = new SettingsForm();
+                settingsForm.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Üyeler formu açılırken hata oluştu: {ex.Message}",
+                MessageBox.Show($"Ayarlar formu açılırken hata oluştu: {ex.Message}",
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -115,7 +115,7 @@ namespace kutupHaneOtomasyonu
 
         private void btnManageUsers_Click(object sender, EventArgs e)
         {
-            btnUyeler_Click(sender, e);
+            btnAyarlar_Click(sender, e); // Ayarlara yönlendir
         }
 
         private void btnReports_Click(object sender, EventArgs e)
@@ -179,6 +179,7 @@ namespace kutupHaneOtomasyonu
                 }
             }
         }
+
         // Rezervasyonlar butonu click eventi
         private void btnRezervasyonlar_Click(object sender, EventArgs e)
         {
@@ -201,9 +202,9 @@ namespace kutupHaneOtomasyonu
             btnKitaplar_Click(sender, e);
         }
 
-        private void üyelerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ayarlarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnUyeler_Click(sender, e);
+            btnAyarlar_Click(sender, e);
         }
 
         private void emanetlerToolStripMenuItem_Click(object sender, EventArgs e)

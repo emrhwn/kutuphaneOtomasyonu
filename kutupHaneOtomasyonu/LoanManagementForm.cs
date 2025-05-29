@@ -1,9 +1,11 @@
-﻿using System;
+﻿using kutupHaneOtomasyonu.Data;
+using kutupHaneOtomasyonu.Models;
+using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using kutupHaneOtomasyonu.Data;
-using kutupHaneOtomasyonu.Models;
+using System.Data.Entity;
 
 namespace kutupHaneOtomasyonu.Forms
 {
@@ -29,99 +31,235 @@ namespace kutupHaneOtomasyonu.Forms
 
         private void LoadLoans()
         {
-            var loansData = _context.Loans.ToList();
-
-            var loans = loansData.Select(l => new
+            try
             {
-                l.LoanId,
-                MemberName = l.Member.FirstName + " " + l.Member.LastName,
-                BookTitle = l.Book.Title,
-                l.LoanDate,
-                l.DueDate,
-                l.ReturnDate,
-                Status = l.ReturnDate == null ? "Ödünçte" : "İade Edildi",
-                DaysLate = l.ReturnDate == null && l.DueDate < DateTime.Now ?
-                    (int)(DateTime.Now - l.DueDate).TotalDays : 0,
-                Fine = l.Fine.HasValue ? l.Fine.Value : 0m
-            })
-            .OrderByDescending(l => l.LoanDate)
-            .ToList();
+                var loans = (from l in _context.Loans
+                             join m in _context.Members on l.MemberId equals m.MemberId
+                             join b in _context.Books on l.BookId equals b.BookId
+                             select new
+                             {
+                                 l.LoanId,
+                                 MemberName = m.FirstName + " " + m.LastName,
+                                 BookTitle = b.Title,
+                                 l.LoanDate,
+                                 l.DueDate,
+                                 l.ReturnDate,
+                                 Status = l.ReturnDate == null ? "Ödünçte" : "İade Edildi",
+                                 DaysLate = l.ReturnDate == null && l.DueDate < DateTime.Now ?
+                                     System.Data.Entity.DbFunctions.DiffDays(l.DueDate, DateTime.Now) ?? 0 : 0,
+                                 Fine = l.Fine ?? 0m
+                             })
+                             .OrderByDescending(l => l.LoanDate)
+                             .ToList();
 
-            dgvLoans.DataSource = loans;
+                dgvLoans.DataSource = loans;
 
-            // Kolon başlıklarını düzenle
-            dgvLoans.Columns["LoanId"].HeaderText = "ID";
-            dgvLoans.Columns["MemberName"].HeaderText = "Üye Adı";
-            dgvLoans.Columns["BookTitle"].HeaderText = "Kitap Adı";
-            dgvLoans.Columns["LoanDate"].HeaderText = "Ödünç Tarihi";
-            dgvLoans.Columns["DueDate"].HeaderText = "İade Tarihi";
-            dgvLoans.Columns["ReturnDate"].HeaderText = "Teslim Tarihi";
-            dgvLoans.Columns["Status"].HeaderText = "Durum";
-            dgvLoans.Columns["DaysLate"].HeaderText = "Gecikme (Gün)";
-            dgvLoans.Columns["Fine"].HeaderText = "Ceza (TL)";
-
-            // Geciken kayıtları renklendir
-            foreach (DataGridViewRow row in dgvLoans.Rows)
-            {
-                int daysLate = Convert.ToInt32(row.Cells["DaysLate"].Value);
-                if (daysLate > 0)
+                // DataGridView ayarlarını kontrol et
+                if (dgvLoans.Columns.Count > 0)
                 {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.MistyRose;
+                    // Kolon başlıklarını düzenle
+                    dgvLoans.Columns["LoanId"].HeaderText = "ID";
+                    dgvLoans.Columns["MemberName"].HeaderText = "Üye Adı";
+                    dgvLoans.Columns["BookTitle"].HeaderText = "Kitap Adı";
+                    dgvLoans.Columns["LoanDate"].HeaderText = "Ödünç Tarihi";
+                    dgvLoans.Columns["DueDate"].HeaderText = "İade Tarihi";
+                    dgvLoans.Columns["ReturnDate"].HeaderText = "Teslim Tarihi";
+                    dgvLoans.Columns["Status"].HeaderText = "Durum";
+                    dgvLoans.Columns["DaysLate"].HeaderText = "Gecikme (Gün)";
+                    dgvLoans.Columns["Fine"].HeaderText = "Ceza (TL)";
+
+                    // Kolon genişliklerini ayarla
+                    dgvLoans.Columns["LoanId"].Width = 50;
+                    dgvLoans.Columns["MemberName"].Width = 150;
+                    dgvLoans.Columns["BookTitle"].Width = 200;
+                    dgvLoans.Columns["LoanDate"].Width = 100;
+                    dgvLoans.Columns["DueDate"].Width = 100;
+                    dgvLoans.Columns["ReturnDate"].Width = 100;
+                    dgvLoans.Columns["Status"].Width = 80;
+                    dgvLoans.Columns["DaysLate"].Width = 80;
+                    dgvLoans.Columns["Fine"].Width = 80;
+
+                    // Tarih formatlarını düzenle
+                    dgvLoans.Columns["LoanDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
+                    dgvLoans.Columns["DueDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
+                    dgvLoans.Columns["ReturnDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
+
+                    // Para formatını düzenle
+                    dgvLoans.Columns["Fine"].DefaultCellStyle.Format = "C2";
+                    dgvLoans.Columns["Fine"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("tr-TR");
+
+                    // Sütun hizalamalarını ayarla
+                    dgvLoans.Columns["LoanId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvLoans.Columns["DaysLate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvLoans.Columns["Fine"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvLoans.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                    // Geciken kayıtları renklendir
+                    foreach (DataGridViewRow row in dgvLoans.Rows)
+                    {
+                        if (row.Cells["DaysLate"].Value != null)
+                        {
+                            int daysLate = Convert.ToInt32(row.Cells["DaysLate"].Value);
+                            string status = row.Cells["Status"].Value?.ToString();
+
+                            if (daysLate > 0 && status == "Ödünçte")
+                            {
+                                // Gecikmiş ve hala iade edilmemiş
+                                row.DefaultCellStyle.BackColor = Color.MistyRose;
+                                row.DefaultCellStyle.ForeColor = Color.DarkRed;
+                            }
+                            else if (daysLate > 0 && status == "İade Edildi")
+                            {
+                                // Geç iade edilmiş
+                                row.DefaultCellStyle.BackColor = Color.LightYellow;
+                            }
+                            else if (status == "İade Edildi")
+                            {
+                                // Zamanında iade edilmiş
+                                row.DefaultCellStyle.BackColor = Color.LightGreen;
+                            }
+                        }
+                    }
+
+                    // Seçim modunu ayarla
+                    dgvLoans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dgvLoans.MultiSelect = false;
+                    dgvLoans.ReadOnly = true;
+                    dgvLoans.AllowUserToAddRows = false;
+                    dgvLoans.AllowUserToDeleteRows = false;
+                    dgvLoans.AllowUserToOrderColumns = true;
+                    dgvLoans.RowHeadersVisible = false;
+
+                    // Alternatif satır renkleri
+                    dgvLoans.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
                 }
+
+                // Durum bilgisini güncelle
+                UpdateStatusBar();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Emanet kayıtları yüklenirken hata oluştu:\n{ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Durum çubuğunu güncelleme metodu
+        private void UpdateStatusBar()
+        {
+            try
+            {
+                var totalLoans = dgvLoans.Rows.Count;
+                var activeLoans = dgvLoans.Rows.Cast<DataGridViewRow>()
+                    .Count(r => r.Cells["Status"].Value?.ToString() == "Ödünçte");
+                var overdueLoans = dgvLoans.Rows.Cast<DataGridViewRow>()
+                    .Count(r => Convert.ToInt32(r.Cells["DaysLate"].Value) > 0 &&
+                                r.Cells["Status"].Value?.ToString() == "Ödünçte");
+
+                // Eğer status label'larınız varsa
+                // lblTotalLoans.Text = $"Toplam: {totalLoans}";
+                // lblActiveLoans.Text = $"Aktif: {activeLoans}";
+                // lblOverdueLoans.Text = $"Gecikmiş: {overdueLoans}";
+            }
+            catch { }
         }
 
         private void LoadMembers()
         {
-            var members = _context.Members
-                .Where(m => m.IsActive)
-                .OrderBy(m => m.FirstName)
-                .ThenBy(m => m.LastName)
-                .Select(m => new
-                {
-                    m.MemberId,
-                    FullName = m.FirstName + " " + m.LastName
-                })
-                .ToList();
+            try
+            {
+                var members = _context.Members
+                    .Where(m => m.IsActive)
+                    .OrderBy(m => m.FirstName)
+                    .ThenBy(m => m.LastName)
+                    .Select(m => new
+                    {
+                        m.MemberId,
+                        FullName = m.FirstName + " " + m.LastName
+                    })
+                    .ToList();
 
-            cmbMember.DataSource = members;
-            cmbMember.DisplayMember = "FullName";
-            cmbMember.ValueMember = "MemberId";
-            cmbMember.SelectedIndex = -1;
+                cmbMember.DataSource = members;
+                cmbMember.DisplayMember = "FullName";
+                cmbMember.ValueMember = "MemberId";
+                cmbMember.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Üyeler yüklenirken hata: {ex.Message}", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadBooks()
         {
-            var books = _context.Books
-                .Where(b => b.AvailableCopies > 0)
-                .OrderBy(b => b.Title)
-                .Select(b => new
+            try
+            {
+                var books = (from b in _context.Books
+                             join a in _context.Authors on b.AuthorId equals a.AuthorId
+                             where b.AvailableCopies > 0
+                             select new
+                             {
+                                 b.BookId,
+                                 b.Title,
+                                 AuthorName = a.FirstName + " " + a.LastName,
+                                 b.AvailableCopies
+                             }).ToList();
+
+                var booksWithDisplay = books.Select(b => new
                 {
                     b.BookId,
-                    DisplayText = b.Title + " - " + b.Author.Name + " (Mevcut: " + b.AvailableCopies + ")"
-                })
-                .ToList();
+                    DisplayText = b.Title + " - " + b.AuthorName + " (Mevcut: " + b.AvailableCopies + ")"
+                }).ToList();
 
-            cmbBook.DataSource = books;
-            cmbBook.DisplayMember = "DisplayText";
-            cmbBook.ValueMember = "BookId";
-            cmbBook.SelectedIndex = -1;
+                cmbBook.DataSource = booksWithDisplay;
+                cmbBook.DisplayMember = "DisplayText";
+                cmbBook.ValueMember = "BookId";
+                cmbBook.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kitaplar yüklenirken hata: {ex.Message}", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateStatistics()
         {
-            int totalLoans = _context.Loans.Count();
-            int activeLoans = _context.Loans.Count(l => l.ReturnDate == null);
-            int overdueLoans = _context.Loans.Count(l => l.ReturnDate == null && l.DueDate < DateTime.Now);
+            try
+            {
+                // Temel istatistikler
+                int totalLoans = _context.Loans.Count();
+                int activeLoans = _context.Loans.Where(l => l.ReturnDate == null).Count();
+                int overdueLoans = _context.Loans
+                    .Where(l => l.ReturnDate == null && l.DueDate < DateTime.Now)
+                    .Count();
 
-            // Fine toplamını hesapla
-            var allLoans = _context.Loans.ToList();
-            decimal totalFines = allLoans.Where(l => l.Fine.HasValue).Sum(l => l.Fine.Value);
+                // Fine toplamını hesapla
+                decimal totalFines = 0;
+                var loansWithFines = _context.Loans.Where(l => l.Fine != null).ToList();
+                if (loansWithFines.Any())
+                {
+                    totalFines = loansWithFines.Sum(l => l.Fine.Value);
+                }
 
-            lblTotalLoans.Text = $"Toplam Ödünç: {totalLoans}";
-            lblActiveLoans.Text = $"Aktif Ödünç: {activeLoans}";
-            lblOverdueLoans.Text = $"Geciken: {overdueLoans}";
-            lblTotalFines.Text = $"Toplam Ceza: {totalFines:C2}";
+                // Label'ları güncelle
+                lblTotalLoans.Text = String.Format("Toplam Ödünç: {0}", totalLoans);
+                lblActiveLoans.Text = String.Format("Aktif Ödünç: {0}", activeLoans);
+                lblOverdueLoans.Text = String.Format("Geciken: {0}", overdueLoans);
+                lblTotalFines.Text = String.Format("Toplam Ceza: {0:C2}", totalFines);
+            }
+            catch (Exception ex)
+            {
+                // Varsayılan değerler
+                lblTotalLoans.Text = "Toplam Ödünç: 0";
+                lblActiveLoans.Text = "Aktif Ödünç: 0";
+                lblOverdueLoans.Text = "Geciken: 0";
+                lblTotalFines.Text = "Toplam Ceza: ₺0,00";
+
+                // Debug için
+                System.Diagnostics.Debug.WriteLine("UpdateStatistics Error: " + ex.Message);
+            }
         }
 
         private void btnLoan_Click(object sender, EventArgs e)
@@ -172,7 +310,10 @@ namespace kutupHaneOtomasyonu.Forms
 
                 // Kitabın mevcut kopyasını azalt
                 var book = _context.Books.Find(bookId);
-                book.AvailableCopies--;
+                if (book != null)
+                {
+                    book.AvailableCopies--;
+                }
 
                 _context.SaveChanges();
 
@@ -186,7 +327,7 @@ namespace kutupHaneOtomasyonu.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hata: {ex.Message}", "Hata",
+                MessageBox.Show($"Hata: {ex.Message}\n\nDetay: {ex.InnerException?.Message}", "Hata",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -219,7 +360,10 @@ namespace kutupHaneOtomasyonu.Forms
 
                     // Kitabın mevcut kopyasını artır
                     var book = _context.Books.Find(loan.BookId);
-                    book.AvailableCopies++;
+                    if (book != null)
+                    {
+                        book.AvailableCopies++;
+                    }
 
                     _context.SaveChanges();
 
@@ -325,82 +469,110 @@ namespace kutupHaneOtomasyonu.Forms
 
         private void LoadBooksForReturn(int currentBookId)
         {
-            var allBooks = _context.Books
-                .OrderBy(b => b.Title)
-                .Select(b => new
+            try
+            {
+                var allBooks = _context.Books
+                    .Select(b => new
+                    {
+                        b.BookId,
+                        b.Title,
+                        b.AvailableCopies
+                    })
+                    .ToList();
+
+                var booksWithDisplay = allBooks.Select(b => new
                 {
                     b.BookId,
-                    DisplayText = b.Title + " - " + b.Author.Name +
+                    DisplayText = b.Title +
                         (b.BookId == currentBookId ? " (Mevcut Kitap)" : " (Mevcut: " + b.AvailableCopies + ")")
-                })
-                .ToList();
+                }).ToList();
 
-            cmbBook.DataSource = allBooks;
-            cmbBook.DisplayMember = "DisplayText";
-            cmbBook.ValueMember = "BookId";
-            cmbBook.SelectedValue = currentBookId;
+                cmbBook.DataSource = booksWithDisplay;
+                cmbBook.DisplayMember = "DisplayText";
+                cmbBook.ValueMember = "BookId";
+                cmbBook.SelectedValue = currentBookId;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("LoadBooksForReturn Error: " + ex.Message);
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string searchText = txtSearch.Text.ToLower();
-
-            var loansData = _context.Loans
-                .Where(l => l.Member.FirstName.ToLower().Contains(searchText) ||
-                           l.Member.LastName.ToLower().Contains(searchText) ||
-                           l.Book.Title.ToLower().Contains(searchText) ||
-                           l.Book.ISBN.Contains(searchText))
-                .ToList();
-
-            var loans = loansData.Select(l => new
+            try
             {
-                l.LoanId,
-                MemberName = l.Member.FirstName + " " + l.Member.LastName,
-                BookTitle = l.Book.Title,
-                l.LoanDate,
-                l.DueDate,
-                l.ReturnDate,
-                Status = l.ReturnDate == null ? "Ödünçte" : "İade Edildi",
-                DaysLate = l.ReturnDate == null && l.DueDate < DateTime.Now ?
-                    (int)(DateTime.Now - l.DueDate).TotalDays : 0,
-                Fine = l.Fine.HasValue ? l.Fine.Value : 0m
-            })
-            .OrderByDescending(l => l.LoanDate)
-            .ToList();
+                string searchText = txtSearch.Text.ToLower();
 
-            dgvLoans.DataSource = loans;
+                var loans = (from l in _context.Loans
+                             join m in _context.Members on l.MemberId equals m.MemberId
+                             join b in _context.Books on l.BookId equals b.BookId
+                             where m.FirstName.ToLower().Contains(searchText) ||
+                                   m.LastName.ToLower().Contains(searchText) ||
+                                   b.Title.ToLower().Contains(searchText) ||
+                                   b.ISBN.Contains(searchText)
+                             select new
+                             {
+                                 l.LoanId,
+                                 MemberName = m.FirstName + " " + m.LastName,
+                                 BookTitle = b.Title,
+                                 l.LoanDate,
+                                 l.DueDate,
+                                 l.ReturnDate,
+                                 Status = l.ReturnDate == null ? "Ödünçte" : "İade Edildi",
+                                 DaysLate = l.ReturnDate == null && l.DueDate < DateTime.Now ?
+                                     System.Data.Entity.DbFunctions.DiffDays(l.DueDate, DateTime.Now) ?? 0 : 0,
+                                 Fine = l.Fine ?? 0m
+                             })
+                             .OrderByDescending(l => l.LoanDate)
+                             .ToList();
+
+                dgvLoans.DataSource = loans;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Search Error: " + ex.Message);
+            }
         }
 
         private void chkShowReturned_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkShowReturned.Checked)
+            try
             {
-                LoadLoans(); // Tümünü göster
-            }
-            else
-            {
-                // Sadece iade edilmemişleri göster
-                var activeLoansData = _context.Loans
-                    .Where(l => l.ReturnDate == null)
-                    .ToList();
-
-                var activeLoans = activeLoansData.Select(l => new
+                if (chkShowReturned.Checked)
                 {
-                    l.LoanId,
-                    MemberName = l.Member.FirstName + " " + l.Member.LastName,
-                    BookTitle = l.Book.Title,
-                    l.LoanDate,
-                    l.DueDate,
-                    l.ReturnDate,
-                    Status = "Ödünçte",
-                    DaysLate = l.DueDate < DateTime.Now ?
-                        (int)(DateTime.Now - l.DueDate).TotalDays : 0,
-                    Fine = l.Fine.HasValue ? l.Fine.Value : 0m
-                })
-                .OrderByDescending(l => l.LoanDate)
-                .ToList();
+                    LoadLoans(); // Tümünü göster
+                }
+                else
+                {
+                    // Sadece iade edilmemişleri göster
+                    var activeLoans = (from l in _context.Loans
+                                       join m in _context.Members on l.MemberId equals m.MemberId
+                                       join b in _context.Books on l.BookId equals b.BookId
+                                       where l.ReturnDate == null
+                                       select new
+                                       {
+                                           l.LoanId,
+                                           MemberName = m.FirstName + " " + m.LastName,
+                                           BookTitle = b.Title,
+                                           l.LoanDate,
+                                           l.DueDate,
+                                           l.ReturnDate,
+                                           Status = "Ödünçte",
+                                           DaysLate = l.DueDate < DateTime.Now ?
+                                               System.Data.Entity.DbFunctions.DiffDays(l.DueDate, DateTime.Now) ?? 0 : 0,
+                                           Fine = l.Fine ?? 0m
+                                       })
+                                       .OrderByDescending(l => l.LoanDate)
+                                       .ToList();
 
-                dgvLoans.DataSource = activeLoans;
+                    dgvLoans.DataSource = activeLoans;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Filtreleme hatası: {ex.Message}", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
